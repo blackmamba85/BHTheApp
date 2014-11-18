@@ -301,6 +301,7 @@
     <Content Include="Dashboard\Account\Profile.aspx" />
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
+    <Content Include="Dashboard\ManageCode\RegCode.aspx" />
     <Content Include="Dashboard\ManageContract\EditContract.aspx" />
     <Content Include="Dashboard\ManageContract\NewContract.aspx" />
     <Content Include="Dashboard\ManageContract\SQL\ViewContracts.sql" />
@@ -649,6 +650,13 @@
     </Compile>
     <Compile Include="Dashboard\Account\NewVendor.aspx.designer.cs">
       <DependentUpon>NewVendor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageCode\RegCode.aspx.cs">
+      <DependentUpon>RegCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageCode\RegCode.aspx.designer.cs">
+      <DependentUpon>RegCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\ManageContract\EditContract.aspx.cs">
       <DependentUpon>EditContract.aspx</DependentUpon>

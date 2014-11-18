@@ -159,9 +159,15 @@
                          <li><a href='/Dashboard/Tools/Categories'><span>Modify categories</span></a>                            
                          </li>
                       </ul>
-                   </li>         
-                                 
-                </ul>
+                   </li>
+                       
+                     <li class='active has-sub'><a href='#'><span>Manage Code</span></a>
+                      <ul>
+                         <li><a href='/Dashboard/ManageCode/RegCode'><span>Registration Code</span></a></li>
+                      </ul>
+                   </li>             
+                         
+                    </ul>
 
                    
                 </div>
