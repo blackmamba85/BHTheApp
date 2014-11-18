@@ -10,7 +10,7 @@
               
               <div style="width:70%; margin-left:10px"><img  src="../img/notifications.png" class="img-responsive" alt="Responsive image" width="90%"/></div>
               <hr />
-              <asp:HyperLink runat="server" ID="vendorlink" NavigateUrl="~/Dashboard/Account/ManageVendors.aspx" ForeColor="#5C5F60"></asp:HyperLink>
+              <asp:HyperLink runat="server" ID="vendorlink" ForeColor="#5C5F60"></asp:HyperLink>
               <asp:label runat="server" ID="vendor"></asp:label>
               <br />
               <br />

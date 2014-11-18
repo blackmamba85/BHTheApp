@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BHSCMSApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -21,6 +22,9 @@ namespace BHSCMSApp.Dashboard.VendorRFI
             BindGrid();//calls this method to get data for grid
             
         }
+
+       
+
 
         private void BindGrid()
         {
@@ -60,28 +64,61 @@ namespace BHSCMSApp.Dashboard.VendorRFI
             if (e.Row.RowType == DataControlRowType.DataRow)
             {               
                     string enddate = DataBinder.Eval(e.Row.DataItem, "EndDate").ToString();
-
+                    
                     if (Convert.ToDateTime(enddate) < DateTime.Today)
                     {
                         e.Row.Cells[5].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
                         e.Row.Cells[5].Text = "Closed";
-                    }                
+                    }                   
+                
             }
-
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //gets all the necessary data to pass in a query string
+                string complete = DataBinder.Eval(e.Row.DataItem, "IsCompleted").ToString();
+                //gets all the necessary data to pass in a query string    
                 int rfiId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "RFI_ID"));
                 int permissionID = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "PermissionID"));
                 string status = DataBinder.Eval(e.Row.DataItem, "EndDate").ToString();
                 int vendorId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "VendorID"));
 
                 HyperLink reply = (HyperLink)e.Row.FindControl("ReplyLink");
-                reply.NavigateUrl = String.Format("/Dashboard/VendorRFI/ReplyRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                           
+                HyperLink submittedLink = (HyperLink)e.Row.FindControl("SubmittedLink");
+
+                if (complete != "True")
+                {                            
+                   
+                    reply.NavigateUrl = String.Format("/Dashboard/VendorRFI/ReplyRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                     
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
+                    e.Row.Cells[2].Text = "Incompleted";
+                    submittedLink.Visible = false;
+                }
+                else
+                {                 
+                   
+                    submittedLink.NavigateUrl = String.Format("/Dashboard/VendorRFI/ViewSubmittedRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//     
+                    
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
+                    e.Row.Cells[2].Text = "Completed";
+                    reply.Visible = false;
+                }
             }
 
-            
+
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    //gets all the necessary data to pass in a query string
+            //    int rfiId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "RFI_ID"));
+            //    int permissionID = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "PermissionID"));
+            //    string status = DataBinder.Eval(e.Row.DataItem, "EndDate").ToString();
+            //    int vendorId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "VendorID"));
+
+            //    HyperLink reply = (HyperLink)e.Row.FindControl("ReplyLink");
+            //    reply.NavigateUrl = String.Format("/Dashboard/VendorRFI/ReplyRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                           
+            //}
+
+
+           
 
 
         }

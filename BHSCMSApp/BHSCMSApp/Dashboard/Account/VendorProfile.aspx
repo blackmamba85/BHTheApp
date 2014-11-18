@@ -6,8 +6,7 @@
     <asp:Panel runat="server" ID="profile" Visible="true">
 	<div class="row" style="background-color:white; width:100%">
           <div class="col-md-12">
-                <br />   <br />   <br />    <br />
-					
+               
 						<fieldset>
                             <br />
 							<legend><span class="glyphicon glyphicon-user"></span> My Profile</legend>

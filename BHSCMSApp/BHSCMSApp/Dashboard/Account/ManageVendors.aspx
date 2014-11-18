@@ -14,7 +14,7 @@
                  
                  <div class="col-md-8">
              
-                  <asp:DropDownList runat="server" ID="ddstatusfilter" AutoPostBack="true" CssClass="form-control" Width="20%">
+                  <asp:DropDownList runat="server" ID="ddstatusfilter" OnSelectedIndexChanged="ddstatusfilter_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control" Width="20%">
                     <asp:ListItem Value="1">Show All</asp:ListItem>
                     <asp:ListItem Value="2">Approved</asp:ListItem>
                     <asp:ListItem Value="3">Pending</asp:ListItem>
@@ -67,7 +67,7 @@
                                                       
                             <asp:BoundField DataField="CompanyName" HeaderText="Company"/>
                             <asp:BoundField DataField="State" HeaderText="State"/>
-                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status"  HeaderStyle-CssClass="glyphicon glyphicon-sort" HeaderStyle-BorderColor="Transparent" />
+                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                              <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"/>
                            <asp:TemplateField HeaderText="Primary Email">
                             <ItemTemplate>

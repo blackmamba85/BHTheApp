@@ -28,7 +28,7 @@
               <br />
                     <asp:GridView ID="GridView1" runat="server" Width="100%" HorizontalAlign="Center" OnRowDataBound="GridView1_RowDataBound"
                         AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        DataKeyNames="RFI_ID, PermissionID, EndDate, VendorID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
+                        DataKeyNames="RFI_ID, PermissionID, EndDate, VendorID, IsCompleted" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
                          <pagersettings mode="NextPreviousFirstLast" position="Bottom" pagebuttoncount="10"/>
 
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center" />
@@ -39,17 +39,21 @@
                                     <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-folder-open"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
-                                                     
-                              <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
+                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View Submitted" HeaderStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="SubmittedLink" runat="server"> <span class="glyphicon glyphicon-file"></span></asp:HyperLink>
+                                </ItemTemplate>                               
+                            </asp:TemplateField>                      
+                              <asp:BoundField DataField="IsCompleted" HeaderText="Status" />       
                             <asp:BoundField DataField="RFI_ID" HeaderText="RFI_ID" Visible="false" />
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/> 
                              <asp:BoundField DataField="PermissionID" HeaderText="Permission" Visible="false" />                          
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
                             <asp:BoundField DataField="Category" HeaderText="Category" />
-                             <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
-                        
-
+                             <asp:BoundField DataField="ProductDescription" HeaderText="Product" />                             
+                             
+                                                  
                         </Columns>
                     </asp:GridView>
                   

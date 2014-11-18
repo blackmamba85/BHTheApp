@@ -122,6 +122,7 @@
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false" />
                         </Columns>
                     </asp:GridView>
+                     <asp:Button  runat="server" CssClass="btn btn" Text="Export to Excel" ID="btnexportexcelcomparison" OnClick="btnexportexcelcomparison_Click" ToolTip="Click to Export"/>
 
 
                      </div>
@@ -151,6 +152,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                  <asp:Button  runat="server" CssClass="btn btn" Text="Export to Excel" ID="btnexportexcelsavings"  OnClick="btnexportexcelsavings_Click" ToolTip="Click to Export"/>
 
                </div>
 

@@ -24,7 +24,16 @@
 							<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="60%"/>
+									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+								</div>
+							</div>
+                            <br />
+                           
+                            <br />
+                            <div class="form-group">
+							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description</asp:Label>
+								 <div class="col-md-8">   
+									<asp:TextBox runat="server" id="product" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />
@@ -36,7 +45,7 @@
                           <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
                         <div class="col-md-8">               
-                            <asp:TextBox runat="server" ID="startdate" ReadOnly="true"></asp:TextBox>                         
+                            <asp:TextBox runat="server" ID="startdate" ReadOnly="true" BorderColor="Transparent"/>                       
                         </div>
                          </div>
      
@@ -47,7 +56,7 @@
                           <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">End Date:</asp:Label>
                             <div class="col-md-8">               
-                                <asp:TextBox runat="server" ID="enddate" ReadOnly="true"></asp:TextBox>                              
+                                <asp:TextBox runat="server" ID="enddate" ReadOnly="true" BorderColor="Transparent"/>                            
                             </div>
                          </div>
 						<br />
@@ -55,13 +64,26 @@
                             <hr />
                           <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Download RFI documents</asp:Label>
-                            <div class="col-md-8">   
-                             <asp:HyperLink runat="server" ID="rfiDoc" ForeColor="#6BBAEC">Price notification letter  <span class="glyphicon glyphicon-download"></span></asp:HyperLink>	 
-                             <br />           
-                            <asp:HyperLink runat="server" ID="exihbitB" NavigateUrl="~/Documents/docs/Exhibit B Product Cross Reference Template.xlsx" Visible="true" ForeColor="#6BBAEC">Exhibit B Product Cross Reference Template  <span class="glyphicon glyphicon-download"></span></asp:HyperLink>
-                                                    
-
-                            </div>
+                        
+                   <%-- Add a Datalist for show uploaded files --%>
+        <asp:DataList ID="listFiles" runat="server" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="listFiles_ItemCommand">
+            <ItemTemplate>
+                <table class="table" border="1" style="border-color:lightgray" >
+                    <tr>
+                        <td><%#Eval("Document_Name") %></td>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                         <span class="glyphicon glyphicon-download"></span>   <asp:LinkButton ID="lbtnDownload" runat="server" CommandName="Download" CommandArgument=<%#Eval("DocID")%>>Download</asp:LinkButton></td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+        </asp:DataList>
+                              
+                              
+                                           
+                             
                          </div> 
 
                            <br />		
@@ -70,17 +92,19 @@
                             <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload requested documents</asp:Label>
                        <div class="col-md-8">               
-                      <asp:FileUpload runat="server" AllowMultiple="false" ID="docUpload" />  
-                     <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
-                       ControlToValidate="docUpload"></asp:RequiredFieldValidator>--%>
+                      <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />  
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
+                       ControlToValidate="docUpload"></asp:RequiredFieldValidator>
                                             
             </div>
          </div>
 								  <br />	
+                              <br />	
+                              <br />	
                             <hr />			
 							<div class="form-actions">
 								<asp:Button runat="server" Text="Submit" ID="savebtn" class="btn btn-info" OnClick="savebtn_Click" Visible="true"/>
-                                <asp:Button runat="server" Text="Back to List" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click"/>
+                                <asp:Button runat="server" Text="Back to List" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click" CausesValidation="false"/>
 							</div>
 
 

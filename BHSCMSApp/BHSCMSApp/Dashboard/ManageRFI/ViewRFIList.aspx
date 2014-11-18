@@ -53,6 +53,7 @@
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
                             <asp:BoundField DataField="Category" HeaderText="Category" />
+                              <asp:BoundField DataField="ProductDescription" HeaderText="Description" />
                              <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}"  />
                              <asp:BoundField DataField="ModifiedDate" HeaderText="Modified Date" DataFormatString="{0:d}"  />
 

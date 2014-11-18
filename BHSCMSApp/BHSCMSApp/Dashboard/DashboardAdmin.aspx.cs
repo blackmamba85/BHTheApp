@@ -61,6 +61,7 @@ namespace BHSCMSApp.Dashboard
             if (pendingvendors>0)
             {
                 vendorlink.Text = string.Format("You have {0} new vendors waiting for approval", pendingvendors);
+                vendorlink.NavigateUrl = string.Format("/Dashboard/Account/ManageVendors.aspx?status={0}", 3);
             }
 
             if (closedRfi>0)

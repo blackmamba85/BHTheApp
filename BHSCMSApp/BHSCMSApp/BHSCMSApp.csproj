@@ -92,6 +92,8 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -331,12 +333,15 @@
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIDocQry.sql" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIList.sql" />
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
+    <Content Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPList.sql" />
     <Content Include="Dashboard\VendorRFP\VendorRFPList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
+    <Content Include="img\effective.png" />
     <Content Include="img\employees.png" />
     <Content Include="img\notifications.png" />
+    <Content Include="img\padlock.png" />
     <Content Include="img\rfis.png" />
     <Content Include="img\vendors.png" />
     <Content Include="img\purple.png" />
@@ -378,6 +383,23 @@
     <Content Include="Dashboard\DashboardVendor.Master" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="Documents\docs\Exhibit B Product Cross Reference Template.xlsx" />
+    <EntityDeploy Include="Models\FilesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FilesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FilesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FilesModel.edmx</DependentUpon>
+      <LastGenOutput>FilesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FilesModel.edmx.diagram">
+      <DependentUpon>FilesModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FilesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FilesModel.edmx</DependentUpon>
+      <LastGenOutput>FilesModel.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\BHSCMS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\amplify-vsdoc.js" />
@@ -716,6 +738,13 @@
     <Compile Include="Dashboard\VendorRFI\VendorRFIList.aspx.designer.cs">
       <DependentUpon>VendorRFIList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx.cs">
+      <DependentUpon>ViewSubmittedRFI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx.designer.cs">
+      <DependentUpon>ViewSubmittedRFI.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\VendorRFP\VendorRFPList.aspx.cs">
       <DependentUpon>VendorRFPList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -739,6 +768,27 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DocumentFile.cs" />
+    <Compile Include="Models\DocumentTable.cs">
+      <DependentUpon>FilesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DocumentTypeTable.cs">
+      <DependentUpon>FilesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilesModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -776,6 +826,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

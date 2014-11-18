@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BHSCMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DocumentTable">
+          <Key>
+            <PropertyRef Name="DocID" />
+          </Key>
+          <Property Name="DocID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="smallint" />
+          <Property Name="Document_Data" Type="varbinary(max)" />
+          <Property Name="Document_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Content_Type" Type="varchar" MaxLength="100" />
+          <Property Name="ReferenceID" Type="bigint" Nullable="false" />
+          <Property Name="DateStamp" Type="datetime" />
+          <Property Name="VendorID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="DocumentTypeTable">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="smallint" Nullable="false" />
+          <Property Name="DocumentType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__DocumentT__TypeI__2610A626">
+          <End Role="DocumentTypeTable" Type="Self.DocumentTypeTable" Multiplicity="0..1" />
+          <End Role="DocumentTable" Type="Self.DocumentTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypeTable">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="DocumentTable">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BHSCMSModelStoreContainer">
+          <EntitySet Name="DocumentTable" EntityType="Self.DocumentTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypeTable" EntityType="Self.DocumentTypeTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DocumentT__TypeI__2610A626" Association="Self.FK__DocumentT__TypeI__2610A626">
+            <End Role="DocumentTypeTable" EntitySet="DocumentTypeTable" />
+            <End Role="DocumentTable" EntitySet="DocumentTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BHSCMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DocumentTable">
+          <Key>
+            <PropertyRef Name="DocID" />
+          </Key>
+          <Property Name="DocID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int16" />
+          <Property Name="Document_Data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Document_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Content_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceID" Type="Int64" Nullable="false" />
+          <Property Name="DateStamp" Type="DateTime" Precision="3" />
+          <Property Name="VendorID" Type="Int64" />
+          <NavigationProperty Name="DocumentTypeTable" Relationship="Self.FK__DocumentT__TypeI__2610A626" FromRole="DocumentTable" ToRole="DocumentTypeTable" />
+        </EntityType>
+        <EntityType Name="DocumentTypeTable">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int16" Nullable="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DocumentTables" Relationship="Self.FK__DocumentT__TypeI__2610A626" FromRole="DocumentTypeTable" ToRole="DocumentTable" />
+        </EntityType>
+        <Association Name="FK__DocumentT__TypeI__2610A626">
+          <End Role="DocumentTypeTable" Type="Self.DocumentTypeTable" Multiplicity="0..1" />
+          <End Role="DocumentTable" Type="Self.DocumentTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypeTable">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="DocumentTable">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BHSCMS_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DocumentTables" EntityType="Self.DocumentTable" />
+          <EntitySet Name="DocumentTypeTables" EntityType="Self.DocumentTypeTable" />
+          <AssociationSet Name="FK__DocumentT__TypeI__2610A626" Association="Self.FK__DocumentT__TypeI__2610A626">
+            <End Role="DocumentTypeTable" EntitySet="DocumentTypeTables" />
+            <End Role="DocumentTable" EntitySet="DocumentTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BHSCMSModelStoreContainer" CdmEntityContainer="BHSCMS_Entities">
+          <EntitySetMapping Name="DocumentTables">
+            <EntityTypeMapping TypeName="BHSCMSModel.DocumentTable">
+              <MappingFragment StoreEntitySet="DocumentTable">
+                <ScalarProperty Name="DocID" ColumnName="DocID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Document_Data" ColumnName="Document_Data" />
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="Content_Type" ColumnName="Content_Type" />
+                <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypeTables">
+            <EntityTypeMapping TypeName="BHSCMSModel.DocumentTypeTable">
+              <MappingFragment StoreEntitySet="DocumentTypeTable">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -31,6 +31,15 @@ namespace BHSCMSApp.Dashboard.VendorRFI {
         protected global::System.Web.UI.WebControls.TextBox category;
         
         /// <summary>
+        /// product control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox product;
+        
+        /// <summary>
         /// startdate control.
         /// </summary>
         /// <remarks>
@@ -49,22 +58,13 @@ namespace BHSCMSApp.Dashboard.VendorRFI {
         protected global::System.Web.UI.WebControls.TextBox enddate;
         
         /// <summary>
-        /// rfiDoc control.
+        /// listFiles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink rfiDoc;
-        
-        /// <summary>
-        /// exihbitB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink exihbitB;
+        protected global::System.Web.UI.WebControls.DataList listFiles;
         
         /// <summary>
         /// docUpload control.
@@ -74,6 +74,15 @@ namespace BHSCMSApp.Dashboard.VendorRFI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload docUpload;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// savebtn control.

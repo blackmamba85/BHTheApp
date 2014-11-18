@@ -94,7 +94,12 @@
 
       <div class="col-md-9">
            
-           <img src="/img/BHLOUTM-P.png" style="max-width:60%; margin-top:20px"/>
+        <img src="/img/BHLOUTM-P.png" style="max-width:60%; margin-top:20px"/>
+          <br />
+         <%-- <img class="bw" src="/img/effective.png" style="margin-top:20px; max-width:5%;" />
+          
+          <img class="bw" src="/img/padlock.png" style="margin-top:20px; max-width:5%;" />--%>
+
            </div>
             <div class="col-md-3" style="max-width:50%">
               

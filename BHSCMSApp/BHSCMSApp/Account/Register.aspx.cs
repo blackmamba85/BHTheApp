@@ -151,9 +151,10 @@ namespace BHSCMSApp.Account
                 v.RegisterVendor(company, userid, phone, fax, address1, address2, city, state, zipcode, 2, regDate, taxid);
 
                 AddVendorCategories();//inserts categories the vendor sells in the bridge SellTable
-                string emailmessage = "Hi " + CompanyName.Text.Trim() + " !\n" +
-                        "Thanks for showing interest and registering with <a href='http://www.cob-blobfish.cbpa.louisville.edu'>Baptist Health Supply Chain Solution<a>" +
-                        " You can now go your account and enjoy our services. Thanks!";
+                string emailmessage = "Hello " + CompanyName.Text.Trim() + " !<\br>" +
+                        "Thanks for showing interest and registering in <a href='http://www.cob-blobfish.cbpa.louisville.edu'>Baptist Health Supply Chain Solution<a>" +
+                        " You can now go and login in the website, however our staff still needs to validate you which can take from 2 to 3 days. Should you have any questions, please do not hesitate to contact us. Thanks for doing business with us<\br>"
+                        + "Baptist Health Supply Chain Department";
 
                 sendemail(priEmail, emailmessage);
 

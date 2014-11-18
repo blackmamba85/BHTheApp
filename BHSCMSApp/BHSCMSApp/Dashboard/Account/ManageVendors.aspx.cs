@@ -16,16 +16,37 @@ namespace BHSCMSApp.Dashboard
 
         const string ASCENDING = " ASC";
         const string DESCENDING = " DESC";
+        int filter= 1;
 
         private SysUser u = new SysUser();//instantiate a new user from User Class
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindGrid();//calls this method to get data for grid
+
+            if (!Page.IsPostBack)
+            {
+                if (Request.QueryString["status"] != null)
+                {
+                    filter = Convert.ToInt32(Request.QueryString["status"]);
+                    BindGrid(filter);
+
+                }
+                else
+                {
+                    BindGrid(filter);//calls this method to get data for grid
+                }
+
+
+
+            }
+
+
         }
 
-        private void BindGrid()
+        private void BindGrid(int filter)
         {
+            string cmd="";
+
             try
             {
                 //Fetch data from BHSCMS database
@@ -34,8 +55,29 @@ namespace BHSCMSApp.Dashboard
 
                 conn.Open();
 
-                string cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3";
+                switch(filter)
+                {
+                    case 1:
+                        cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3";
+                        break;
+                    case 2:
+                        cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3 and S.StatusID=1";
+                        break;
+                    case 3:
+                        cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3 and S.StatusID=2";
+                        break;
+                    case 4:
+                        cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3 and S.StatusID=3";
+                        break;
+                    case 5:
+                        cmd = "Select U.UserID, U.PrimaryEmail, V.CompanyName, V.State, S.Status from BHSCMS.dbo.SysUserTable U join BHSCMS.dbo.VendorTable V on U.UserID=V.UserID inner join BHSCMS.dbo.StatusTable S on S.StatusID=V.StatusID Where U.RoleID=3 and S.StatusID=4";
+                        break;
+
+                }
+
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd, conn);
+
+               
 
 
                 DataSet ds = new DataSet();
@@ -99,7 +141,7 @@ namespace BHSCMSApp.Dashboard
         {
 
             GridView1.PageIndex = e.NewPageIndex;
-            BindGrid();
+            BindGrid(filter);
         }
 
         protected void GridView1_Sorting(object sender, GridViewSortEventArgs e)
@@ -143,6 +185,13 @@ namespace BHSCMSApp.Dashboard
 
             GridView1.DataSource = dvsort;
             GridView1.DataBind();
+        }
+
+        protected void ddstatusfilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filter = Convert.ToInt32(Request.Form[ddstatusfilter.UniqueID]);
+
+            BindGrid(filter);
         }
 
 

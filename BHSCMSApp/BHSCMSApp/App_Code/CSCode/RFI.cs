@@ -140,6 +140,34 @@ namespace BHSCMSApp
 
         }
 
+        //Updates existing RFI status
+        public void UpdateRFIStatus(int rfiId, int vendorId)
+        {
+
+            string connectionString = GetConnectionString();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string updateQry = "update BHSCMS.dbo.VendorRFITable set IsCompleted=1 where RFI_ID=@id and VendorID=@vendorid";
+
+                    SqlCommand updateCmd = new SqlCommand(updateQry, connection);                    
+                    updateCmd.Parameters.AddWithValue("@id", rfiId);
+                    updateCmd.Parameters.AddWithValue("@vendorid", vendorId);
+                    updateCmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+        }
+
 
         //this method will return the number of closed RFI
         public int CountClosedRFI()
