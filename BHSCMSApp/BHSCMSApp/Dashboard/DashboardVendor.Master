@@ -87,8 +87,8 @@
                       </ul>
                    </li> --%>                   
                     <li><a href='/Dashboard/VendorRFI/VendorRFIList'><span>RFI</span></a></li>
-                    <li><a href='#'><span>RFP</span></a></li>
-                    <li><a href='#'><span>Contracts</span></a></li>
+                    <li><a href='/Dashboard/VendorRFP/VendorRFPList'><span>RFP</span></a></li>
+                    <li><a href='/Dashboard/VendorContract/VendorContractList'><span>Contracts</span></a></li>
                      <li><a href='/Dashboard/Request/VendorRequest'><span>Request</span></a></li>
                     <%--<li><a href="/Dashboard/Account/VendorProfile.aspx"><span>User Account</span></a></li>        --%>        
                 </ul>

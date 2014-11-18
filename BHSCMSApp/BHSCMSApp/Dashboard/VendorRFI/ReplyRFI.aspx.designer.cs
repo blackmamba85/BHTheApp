@@ -22,6 +22,24 @@ namespace BHSCMSApp.Dashboard.VendorRFI {
         protected global::BHSCMSApp.Controls.UserInfoBoxControl UserInfoBoxControl;
         
         /// <summary>
+        /// ErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        
+        /// <summary>
+        /// FailureText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal FailureText;
+        
+        /// <summary>
         /// category control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace BHSCMSApp.Dashboard.VendorRFI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList listFiles;
+        
+        /// <summary>
+        /// lbluploadeddoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbluploadeddoc;
         
         /// <summary>
         /// docUpload control.

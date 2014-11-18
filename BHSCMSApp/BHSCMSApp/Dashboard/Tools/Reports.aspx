@@ -37,8 +37,8 @@
       <li>
       <h3><span class="glyphicon glyphicon-file"></span>Select RFP</h3>
       <ul style="height:60px">
-        <asp:DropDownList runat="server" AutoPostBack="true" ForeColor="#5C5F60" ID="ddlrfp" AppendDataBoundItems="true">
-            <asp:ListItem>Select RFP...</asp:ListItem>
+        <asp:DropDownList runat="server" AutoPostBack="true" ForeColor="#5C5F60" ID="ddlrfp" placeholder="Select RFP...">
+           
         </asp:DropDownList>
          
       </ul>  
@@ -186,13 +186,13 @@
         $(function () {
 
             $("#accordian h3").click(function () {
-                $("#accordian ul ul").slideUp();
-                if ($(this).next().is(":hidden")) {
+                //$("#accordian ul ul").slideUp();
+                //if ($(this).next().is(":hidden")) {
                     $(this).next().slideDown();
-                }
-
-
             });
+
+
+            //});
 
 
         });

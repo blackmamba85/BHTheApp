@@ -31,9 +31,9 @@
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center" />
                         
                          <Columns>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Open RFI" HeaderStyle-HorizontalAlign="Center">
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Reply RFP" HeaderStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-folder-open"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-edit"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                                                      

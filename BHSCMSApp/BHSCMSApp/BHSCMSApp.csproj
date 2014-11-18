@@ -329,9 +329,12 @@
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
     <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
     <Content Include="Dashboard\Tools\SQL\ReportDateRange.sql" />
+    <Content Include="Dashboard\VendorContract\VendorContractList.aspx" />
     <Content Include="Dashboard\VendorRFI\ReplyRFI.aspx" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIDocQry.sql" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIList.sql" />
+    <Content Include="Dashboard\VendorRFI\SQL\VendorRFIListParticipate.sql" />
+    <Content Include="Dashboard\VendorRFI\SQL\VendorRFIListView.sql" />
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
     <Content Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPList.sql" />
@@ -723,6 +726,13 @@
     </Compile>
     <Compile Include="Dashboard\Tools\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorContract\VendorContractList.aspx.cs">
+      <DependentUpon>VendorContractList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorContract\VendorContractList.aspx.designer.cs">
+      <DependentUpon>VendorContractList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\VendorRFI\ReplyRFI.aspx.cs">
       <DependentUpon>ReplyRFI.aspx</DependentUpon>

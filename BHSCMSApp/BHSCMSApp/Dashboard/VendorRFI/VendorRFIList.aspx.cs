@@ -15,18 +15,20 @@ namespace BHSCMSApp.Dashboard.VendorRFI
     {
         DataTable dt;//DataTable use to store retrieved data
         private int _userid;
+        int filter = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _userid = UserInfoBoxControl.UserID;
-            BindGrid();//calls this method to get data for grid
-            
-        }
 
-       
+            if (!Page.IsPostBack)
+            {
+                BindGrid(filter);//calls this method to get data for grid
+            }
+        }       
 
 
-        private void BindGrid()
+        private void BindGrid(int filter)
         {
             string strSQL = "";
 
@@ -37,8 +39,21 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                 SqlConnection conn = new SqlConnection(connString);
 
                 conn.Open();
+                switch (filter)
+                {
+                    case 1:
+                    strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIList.sql"), _userid);  
+                    break;
+                    case 2:
+                    strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIListParticipate.sql"), _userid);   
+                    break;
+                    case 3:
+                    strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIListView.sql"), _userid); 
+                    break;
+                }
 
-                strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIList.sql"), _userid);
+
+                //strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIList.sql"), _userid);
                 SqlDataAdapter adapter = new SqlDataAdapter(strSQL, conn);
 
 
@@ -67,8 +82,8 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                     
                     if (Convert.ToDateTime(enddate) < DateTime.Today)
                     {
-                        e.Row.Cells[5].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
-                        e.Row.Cells[5].Text = "Closed";
+                        e.Row.Cells[7].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
+                        e.Row.Cells[7].Text = "Closed";
                     }                   
                 
             }
@@ -89,14 +104,13 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                 {                            
                    
                     reply.NavigateUrl = String.Format("/Dashboard/VendorRFI/ReplyRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                     
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
-                    e.Row.Cells[2].Text = "Incompleted";
+                    e.Row.Cells[2].Text = "Open";
                     submittedLink.Visible = false;
                 }
                 else
                 {                 
                    
-                    submittedLink.NavigateUrl = String.Format("/Dashboard/VendorRFI/ViewSubmittedRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//     
+                    submittedLink.NavigateUrl = String.Format("/Dashboard/VendorRFI/ViewSubmittedRFI.aspx?rfiid={0}&vId={1}", rfiId, vendorId);//     
                     
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
                     e.Row.Cells[2].Text = "Completed";
@@ -126,7 +140,14 @@ namespace BHSCMSApp.Dashboard.VendorRFI
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            BindGrid();
+            BindGrid(filter);
+        }
+
+        protected void ddpermissionFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filter = Convert.ToInt32(Request.Form[ddpermissionFilter.UniqueID]);
+
+            BindGrid(filter);
         }
 
     }

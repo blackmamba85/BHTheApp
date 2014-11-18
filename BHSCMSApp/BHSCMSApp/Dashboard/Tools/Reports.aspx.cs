@@ -41,8 +41,10 @@ namespace BHSCMSApp.Dashboard.Tools
                 else
                 {
                     FillInRFPDropDownList(_startDate, _endDate);
+                    StartDate.Text = _startDate;
+                    EndDate.Text = _endDate;
 
-                    if (ddlrfp.Items.Count == 1)
+                    if (ddlrfp.Items.Count == 0)
                     {
                         ErrorMessage.Visible = true;
                         FailureText.Text = "There are no RFPs for the date range provided";
@@ -173,7 +175,7 @@ namespace BHSCMSApp.Dashboard.Tools
 
         protected void genReport_Click(object sender, EventArgs e)
         {
-            if(ddlrfp.SelectedIndex <1)
+            if(ddlrfp.SelectedIndex <0)
             {
                 ErrorMessage.Visible = true;
                 FailureText.Text = "Please select RFP from list to generate report";   
@@ -181,6 +183,8 @@ namespace BHSCMSApp.Dashboard.Tools
             }
             else
             {
+                ErrorMessage.Visible = false;
+                
                 lblProduct.Text = "RFP Product: " + ddlrfp.SelectedItem.Text;
                 BindComparePrices();
                 BindCalculateSavings();

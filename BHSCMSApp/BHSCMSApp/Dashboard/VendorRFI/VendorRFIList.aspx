@@ -16,7 +16,7 @@
                  
                  <div class="col-md-8">
              
-                <asp:DropDownList runat="server" ID="ddpermissionFilter" AutoPostBack="true" CssClass="form-control" Width="20%">
+                <asp:DropDownList runat="server" ID="ddpermissionFilter" AutoPostBack="true" CssClass="form-control" Width="20%" OnSelectedIndexChanged="ddpermissionFilter_SelectedIndexChanged">
                     <asp:ListItem Value="1">Show All</asp:ListItem>
                     <asp:ListItem Value="2">Participate</asp:ListItem>
                     <asp:ListItem Value="3">View</asp:ListItem>
@@ -34,9 +34,9 @@
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center" />
                         
                          <Columns>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Open RFI" HeaderStyle-HorizontalAlign="Center">
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Reply RFI" HeaderStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-folder-open"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon glyphicon-edit"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                              <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View Submitted" HeaderStyle-HorizontalAlign="Center">
@@ -69,6 +69,12 @@
     <br />
     <br /> 
     <br /> 
+      <br />
+    <br />   
+    <br />
+    <br />  
+    <br />   
+    
 
 
 

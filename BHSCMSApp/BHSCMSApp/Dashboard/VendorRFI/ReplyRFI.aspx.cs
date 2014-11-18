@@ -38,6 +38,9 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                     savebtn.Visible = false;
                     //exihbitB.Visible = false;
                     docUpload.Visible = false;
+                    lbluploadeddoc.Visible = false;
+                    ErrorMessage.Visible = true;
+                    FailureText.Text = "You have no permission to participate or this RFI is already closed";
                 }
             }       
 
@@ -101,38 +104,54 @@ namespace BHSCMSApp.Dashboard.VendorRFI
             if (docUpload.HasFile)
             {
                 fileList = new List<DocumentFile>();
-                foreach (HttpPostedFile file in docUpload.PostedFiles)
+
+                if(docUpload.PostedFiles.Count == 2)
                 {
-                    //HttpPostedFile file = docUpload.PostedFile;
-                    BinaryReader br = new BinaryReader(file.InputStream);
-                    byte[] buffer = br.ReadBytes(file.ContentLength);
+                    ErrorMessage.Visible = false;
 
-                    using (BHSCMS_Entities dc = new BHSCMS_Entities())
+                    foreach (HttpPostedFile file in docUpload.PostedFiles)
                     {
+                        //HttpPostedFile file = docUpload.PostedFile;
+                        BinaryReader br = new BinaryReader(file.InputStream);
+                        byte[] buffer = br.ReadBytes(file.ContentLength);
 
-                        dc.DocumentTables.Add(
-                            new DocumentTable
-                            {
-                                TypeID = 5,
-                                Document_Data = buffer,
-                                Document_Name = file.FileName,
-                                Content_Type = file.ContentType,
-                                ReferenceID = rId,
-                                DateStamp = DateTime.Today,
-                                VendorID = vendorID
+                        using (BHSCMS_Entities dc = new BHSCMS_Entities())
+                        {
+
+                            dc.DocumentTables.Add(
+                                new DocumentTable
+                                {
+                                    TypeID = 5,
+                                    Document_Data = buffer,
+                                    Document_Name = file.FileName,
+                                    Content_Type = file.ContentType,
+                                    ReferenceID = rId,
+                                    DateStamp = DateTime.Today,
+                                    VendorID = vendorID
 
 
 
-                            });
-                        dc.SaveChanges();
-                        PopulateUploadedFiles();
+                                });
+                            dc.SaveChanges();
+                            PopulateUploadedFiles();
+                        }
                     }
+
+                    r.UpdateRFIStatus(rId, vendorID);//updates the complete status on VendorRFITable
+                    Page.Response.Redirect("VendorRFIList.aspx");
+
                 }
+                else
+                {
+                    ErrorMessage.Visible = true;
+                    FailureText.Text = "2 Files are required to submit the RFI";
+                }
+                
             }
 
-            r.UpdateRFIStatus(rId, vendorID);
+           
             
-            Page.Response.Redirect("VendorRFIList.aspx");
+            
         }
 
         protected void listFiles_ItemCommand(object source, DataListCommandEventArgs e)

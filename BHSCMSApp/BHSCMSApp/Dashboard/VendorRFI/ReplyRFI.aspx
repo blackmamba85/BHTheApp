@@ -9,10 +9,15 @@
           <div class="col-md-12">
             					
 						<fieldset>
-							<h4>RFI Details</h4>
+							<h4 style="text-align:center">RFI Details</h4>
                             <br />
                              
                             <hr />
+                             <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                             <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                                  </p>
+                            </asp:PlaceHolder>	
                            <%--<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI ID</asp:Label>
 								 <div class="col-md-8">   
@@ -90,7 +95,7 @@
                               <br />		
 							<hr />
                             <div class="form-group">
-                        <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Upload requested documents</asp:Label>
+                        <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true" ID="lbluploadeddoc">Upload requested documents</asp:Label>
                        <div class="col-md-8">               
                       <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />  
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI document" 
@@ -101,7 +106,10 @@
 								  <br />	
                               <br />	
                               <br />	
-                            <hr />			
+                            <hr />
+                             
+                            
+                            		
 							<div class="form-actions">
 								<asp:Button runat="server" Text="Submit" ID="savebtn" class="btn btn-info" OnClick="savebtn_Click" Visible="true"/>
                                 <asp:Button runat="server" Text="Back to List" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click" CausesValidation="false"/>
