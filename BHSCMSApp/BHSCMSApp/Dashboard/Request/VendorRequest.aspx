@@ -63,8 +63,8 @@
                 <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="130" />
                 <Texts SelectBoxCaption="Select from list" />
                 </asp:DropDownCheckBoxes>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="chkCommodities" ValidationGroup="request"
-                    CssClass="text-danger" ErrorMessage="Please Select at least one Category." />
+                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="chkCommodities" ValidationGroup="request"
+                    CssClass="text-danger" ErrorMessage="Please Select at least one Category." />--%>
             </div>
         </div>
 
