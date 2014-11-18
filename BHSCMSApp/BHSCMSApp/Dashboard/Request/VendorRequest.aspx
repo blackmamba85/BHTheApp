@@ -4,7 +4,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="col-md-8">
+    <div class="row">
          <h3 class="headers">Category Addition</h3> 
           <hr />
          <p>Please complete the form below.</p>
@@ -79,6 +79,7 @@
             </div>
         </div>
 
+        
 
 
     <script type="text/javascript">
@@ -87,4 +88,10 @@
         });
 
 </script>
+
+
+    <br />
+        <br />
+        <br />
+
 </asp:Content>
