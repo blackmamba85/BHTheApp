@@ -14,16 +14,21 @@ namespace BHSCMSApp.Dashboard.VendorRFP
     {
         DataTable dt;//DataTable use to store retrieved data
         private int _userid;
+        int filter = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _userid = UserInfoBoxControl.UserID;
-            BindGrid();//calls this method to get data for grid
+
+            if (!Page.IsPostBack)
+            {
+                BindGrid(filter);//calls this method to get data for grid
+            }
         }
 
 
 
-        private void BindGrid()
+        private void BindGrid(int filter)
         {
             string strSQL = "";
 
@@ -35,7 +40,18 @@ namespace BHSCMSApp.Dashboard.VendorRFP
 
                 conn.Open();
 
-                strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFPList.sql"), _userid);
+                switch (filter)
+                {
+                    case 1:
+                        strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFPList.sql"), _userid);
+                        break;
+                    case 2:
+                        strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFPListParticipate.sql"), _userid);
+                        break;
+                    case 3:
+                        strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFPListView.sql"), _userid);
+                        break;
+                }
                 SqlDataAdapter adapter = new SqlDataAdapter(strSQL, conn);
 
 
@@ -72,14 +88,32 @@ namespace BHSCMSApp.Dashboard.VendorRFP
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //gets all the necessary data to pass in a query string
+                string complete = DataBinder.Eval(e.Row.DataItem, "IsCompleted").ToString();
+                //gets all the necessary data to pass in a query string    
                 int rfpId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "RFP_ID"));
                 int permissionID = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "PermissionID"));
                 string status = DataBinder.Eval(e.Row.DataItem, "EndDate").ToString();
                 int vendorId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "VendorID"));
 
                 HyperLink reply = (HyperLink)e.Row.FindControl("ReplyLink");
-                reply.NavigateUrl = String.Format("/Dashboard/VendorRFP/ReplyRFP.aspx?rfpid={0}&pID={1}&status={2}&vId={3}", rfpId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                           
+                HyperLink submittedLink = (HyperLink)e.Row.FindControl("SubmittedLink");
+
+                if (complete != "True")
+                {
+
+                    reply.NavigateUrl = String.Format("/Dashboard/VendorRFP/ReplyRFP.aspx?rfpid={0}&pID={1}&status={2}&vId={3}", rfpId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                     
+                    e.Row.Cells[2].Text = "Open";
+                    submittedLink.Visible = false;
+                }
+                else
+                {
+
+                    submittedLink.NavigateUrl = String.Format("/Dashboard/VendorRFP/ViewSubmittedRFP.aspx?rfpid={0}&vId={1}", rfpId, vendorId);//     
+
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
+                    e.Row.Cells[2].Text = "Completed";
+                    reply.Visible = false;
+                }                   
             }
 
         }
@@ -87,7 +121,14 @@ namespace BHSCMSApp.Dashboard.VendorRFP
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            BindGrid();
+            BindGrid(filter);
+        }
+
+        protected void ddpermissionFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filter = Convert.ToInt32(Request.Form[ddpermissionFilter.UniqueID]);
+
+            BindGrid(filter);
         }
 
     }

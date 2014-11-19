@@ -36,12 +36,12 @@
                          <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Reply RFI" HeaderStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon glyphicon-edit"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-folder-open"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                              <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View Submitted" HeaderStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="SubmittedLink" runat="server"> <span class="glyphicon glyphicon-file"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="SubmittedLink" runat="server"> <span class="glyphicon glyphicon-folder-close"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>                      
                               <asp:BoundField DataField="IsCompleted" HeaderText="Status" />       

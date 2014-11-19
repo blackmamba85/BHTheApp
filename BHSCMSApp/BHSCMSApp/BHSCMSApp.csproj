@@ -338,7 +338,11 @@
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIListView.sql" />
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
     <Content Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx" />
+    <Content Include="Dashboard\VendorRFP\ReplyRFP.aspx" />
+    <Content Include="Dashboard\VendorRFP\SQL\VendorRFPDocQry.sql" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPList.sql" />
+    <Content Include="Dashboard\VendorRFP\SQL\VendorRFPListParticipate.sql" />
+    <Content Include="Dashboard\VendorRFP\SQL\VendorRFPListView.sql" />
     <Content Include="Dashboard\VendorRFP\VendorRFPList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
@@ -762,6 +766,13 @@
     </Compile>
     <Compile Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx.designer.cs">
       <DependentUpon>ViewSubmittedRFI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\ReplyRFP.aspx.cs">
+      <DependentUpon>ReplyRFP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\ReplyRFP.aspx.designer.cs">
+      <DependentUpon>ReplyRFP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\VendorRFP\VendorRFPList.aspx.cs">
       <DependentUpon>VendorRFPList.aspx</DependentUpon>

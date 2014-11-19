@@ -13,7 +13,7 @@
                  
                  <div class="col-md-8">
              
-                <asp:DropDownList runat="server" ID="ddpermissionFilter" AutoPostBack="true" CssClass="form-control" Width="20%">
+                <asp:DropDownList runat="server" ID="ddpermissionFilter" AutoPostBack="true" CssClass="form-control" Width="20%" OnSelectedIndexChanged="ddpermissionFilter_SelectedIndexChanged">
                     <asp:ListItem Value="1">Show All</asp:ListItem>
                     <asp:ListItem Value="2">Participate</asp:ListItem>
                     <asp:ListItem Value="3">View</asp:ListItem>
@@ -31,13 +31,18 @@
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center" />
                         
                          <Columns>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Reply RFP" HeaderStyle-HorizontalAlign="Center">
+                           <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Reply RFP" HeaderStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-edit"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="ReplyLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-folder-open"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
+                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View Submitted" HeaderStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="SubmittedLink" runat="server"> <span class="glyphicon glyphicon-folder-close"></span></asp:HyperLink>
+                                </ItemTemplate>                               
+                            </asp:TemplateField>   
                                                      
-                              <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
+                            <asp:BoundField DataField="IsCompleted" HeaderText="Status" />    
                             <asp:BoundField DataField="RFP_ID" HeaderText="RFI_ID" Visible="false" />
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false"/> 
                              <asp:BoundField DataField="PermissionID" HeaderText="Permission" Visible="false" />                          
@@ -45,7 +50,7 @@
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
                             <asp:BoundField DataField="Category" HeaderText="Category" />
                             <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
-                            <asp:BoundField DataField="GatewayPrice" HeaderText="Gateway Price" DataFormatString="{0:C}"  />
+                            <asp:BoundField DataField="GatewayPrice" HeaderText="Gateway Price" DataFormatString="{0:C}" Visible="false"  />
                         
 
                         </Columns>

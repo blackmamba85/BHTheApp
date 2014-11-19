@@ -82,6 +82,34 @@ namespace BHSCMSApp
 
         }
 
+        //Updates existing RFP status
+        public void UpdateRFPStatus(decimal proposedPrice, int rfpId, int vendorId)
+        {
+
+            string connectionString = GetConnectionString();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string updateQry = "update BHSCMS.dbo.VendorRFPTable set ProposedPrice=@proposedprice, IsCompleted=1 where RFP_ID=@id and VendorID=@vendorid";
+
+                    SqlCommand updateCmd = new SqlCommand(updateQry, connection);
+                    updateCmd.Parameters.AddWithValue("@proposedprice", proposedPrice);
+                    updateCmd.Parameters.AddWithValue("@id", rfpId);
+                    updateCmd.Parameters.AddWithValue("@vendorid", vendorId);
+                    updateCmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+        }
 
         public void AddVendorstoRFP(int rfpID, List<int> vendorid, List<int> permissionID)
         {

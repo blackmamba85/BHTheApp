@@ -104,7 +104,7 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                 {                            
                    
                     reply.NavigateUrl = String.Format("/Dashboard/VendorRFI/ReplyRFI.aspx?rfiid={0}&pID={1}&status={2}&vId={3}", rfiId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                     
-                    e.Row.Cells[2].Text = "Open";
+                    e.Row.Cells[2].Text = "Incomplete";
                     submittedLink.Visible = false;
                 }
                 else
