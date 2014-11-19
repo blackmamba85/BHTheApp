@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace BHSCMSApp.Dashboard.VendorRFI
 {
-    public partial class ViewSubmittedRFI : System.Web.UI.Page
+    public partial class ViewSubmittedRFI : Page
     {
         int rId;
         int vendorID;
