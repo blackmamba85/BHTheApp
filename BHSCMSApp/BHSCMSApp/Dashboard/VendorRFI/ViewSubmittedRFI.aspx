@@ -7,7 +7,7 @@
           <div class="col-md-12">
             					
 						<fieldset>
-							<h4 style="text-align:center">Submitted RFI</h4>
+						  <div style="width:20%; margin: 0 auto"><img  src="../../img/submittedrfi.png" class="img-responsive" alt="Responsive image"/></div>
                             <br />
                              
                             <hr />
@@ -17,7 +17,7 @@
 							<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtcategory" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />
@@ -26,7 +26,7 @@
                             <div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="product" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtproduct" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />

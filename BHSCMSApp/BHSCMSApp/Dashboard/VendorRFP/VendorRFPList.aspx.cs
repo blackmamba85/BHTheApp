@@ -102,7 +102,7 @@ namespace BHSCMSApp.Dashboard.VendorRFP
                 {
 
                     reply.NavigateUrl = String.Format("/Dashboard/VendorRFP/ReplyRFP.aspx?rfpid={0}&pID={1}&status={2}&vId={3}", rfpId, permissionID, Convert.ToDateTime(status).ToShortDateString(), vendorId);//                     
-                    e.Row.Cells[2].Text = "Open";
+                    e.Row.Cells[2].Text = "Incomplete";
                     submittedLink.Visible = false;
                 }
                 else

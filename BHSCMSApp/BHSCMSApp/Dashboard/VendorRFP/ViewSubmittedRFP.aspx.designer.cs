@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BHSCMSApp.Dashboard.VendorContract {
+namespace BHSCMSApp.Dashboard.VendorRFP {
     
     
-    public partial class VendorContractList {
+    public partial class ViewSubmittedRFP {
         
         /// <summary>
         /// UserInfoBoxControl control.
@@ -22,39 +22,66 @@ namespace BHSCMSApp.Dashboard.VendorContract {
         protected global::BHSCMSApp.Controls.UserInfoBoxControl UserInfoBoxControl;
         
         /// <summary>
-        /// ddcontractsstatus control.
+        /// txtcategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddcontractsstatus;
+        protected global::System.Web.UI.WebControls.TextBox txtcategory;
         
         /// <summary>
-        /// GridView1 control.
+        /// txtproduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.TextBox txtproduct;
         
         /// <summary>
-        /// ErrorMessage control.
+        /// txtProposedPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.WebControls.TextBox txtProposedPrice;
         
         /// <summary>
-        /// FailureText control.
+        /// startdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal FailureText;
+        protected global::System.Web.UI.WebControls.TextBox startdate;
+        
+        /// <summary>
+        /// enddate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox enddate;
+        
+        /// <summary>
+        /// listFiles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList listFiles;
+        
+        /// <summary>
+        /// cancelbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelbtn;
     }
 }

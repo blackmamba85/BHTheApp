@@ -9,38 +9,26 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BHSCMSApp.Dashboard.VendorRFP
+namespace BHSCMSApp.Dashboard.VendorContract
 {
-    public partial class ReplyRFP : System.Web.UI.Page
+    public partial class SubmitContract : System.Web.UI.Page
     {
-        int rId;
+        int contractID;
         int vendorID;
-        int permissionId;
-        DateTime _enddate;
         static List<DocumentFile> fileList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            rId = Convert.ToInt32(Request.QueryString["rfpid"]);//gets and convert to int the rfiif passed in the querystring
+            contractID = Convert.ToInt32(Request.QueryString["contractid"]);//gets and convert to int the rfiif passed in the querystring
             vendorID = Convert.ToInt32(Request.QueryString["vId"]);
-            permissionId = Convert.ToInt32(Request.QueryString["pID"]);
-            _enddate = Convert.ToDateTime((Request.QueryString["status"]).ToString());
 
-            GetRFPData();
+            GetContractData();
 
             if (!IsPostBack)
             {
                 PopulateUploadedFiles();
 
-                if (_enddate < DateTime.Today || permissionId == 2)
-                {
-                    savebtn.Visible = false;
-                    //exihbitB.Visible = false;
-                    docUpload.Visible = false;
-                    lbluploadeddoc.Visible = false;
-                    ErrorMessage.Visible = true;
-                    FailureText.Text = "***You have no permission to participate or this RFP is already closed";
-                }
+
             }
 
             //If first time page is submitted and we have file in FileUpload control but not in session 
@@ -65,20 +53,21 @@ namespace BHSCMSApp.Dashboard.VendorRFP
                 Label1.Text = docUpload.FileName;
             }
 
+
         }
 
         private void PopulateUploadedFiles()
         {
             using (BHSCMS_Entities dc = new BHSCMS_Entities())
             {
-                List<DocumentTable> allFiles = dc.DocumentTables.Where(a => a.ReferenceID == rId && a.TypeID == 3).ToList();
+                List<DocumentTable> allFiles = dc.DocumentTables.Where(a => a.ReferenceID == contractID && a.TypeID == 4).ToList();
                 listFiles.DataSource = allFiles;
                 listFiles.DataBind();
             }
         }
 
 
-        protected void GetRFPData()
+        protected void GetContractData()
         {
 
             try
@@ -88,18 +77,20 @@ namespace BHSCMSApp.Dashboard.VendorRFP
                 SqlConnection conn = new SqlConnection(connString);
 
                 conn.Open();
-                string strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFPDocQry.sql"), rId);
+                string strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorContractDocQry.sql"), contractID);
                 SqlCommand command = new SqlCommand(strSQL, conn);
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
+                    this.txtTitle.Text = reader["Title"].ToString();
+                    this.txtDescription.Text = reader["Description"].ToString();
+                    this.category.Text = reader["Category"].ToString();
+                    this.txtProduct.Text = reader["ProductDescription"].ToString();
+                    this.txtContractPrice.Text = string.Format("{0:C2}", Convert.ToDecimal(reader["ContractPrice"].ToString()));
                     this.startdate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();
                     this.enddate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
-                    this.category.Text = reader["Category"].ToString();
-                    this.txtGatewayPrice.Text = string.Format("{0:C2}", Convert.ToDecimal(reader["GatewayPrice"].ToString()));
-                    this.product.Text = reader["ProductDescription"].ToString();
 
 
                 }
@@ -114,67 +105,54 @@ namespace BHSCMSApp.Dashboard.VendorRFP
 
         protected void cancelbtn_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("VendorRFPList.aspx");
+            Page.Response.Redirect("VendorContractList.aspx");
 
         }
 
         protected void savebtn_Click(object sender, EventArgs e)
-        {          
-           
-            
+        {
+
             // Code for Upload file to database
-            if (docUpload.HasFiles)
+             if (docUpload.HasFiles)
             {
                 fileList = new List<DocumentFile>();
 
-                if (docUpload.PostedFiles.Count == 2)
-                {
-                    ErrorMessage.Visible = false;
 
-                    foreach (HttpPostedFile file in docUpload.PostedFiles)
+                foreach (HttpPostedFile file in docUpload.PostedFiles)
+                {
+                    //HttpPostedFile file = docUpload.PostedFile;
+                    BinaryReader br = new BinaryReader(file.InputStream);
+                    byte[] buffer = br.ReadBytes(file.ContentLength);
+
+                    using (BHSCMS_Entities dc = new BHSCMS_Entities())
                     {
-                        //HttpPostedFile file = docUpload.PostedFile;
-                        BinaryReader br = new BinaryReader(file.InputStream);
-                        byte[] buffer = br.ReadBytes(file.ContentLength);
 
-                        using (BHSCMS_Entities dc = new BHSCMS_Entities())
-                        {
+                        dc.DocumentTables.Add(
+                            new DocumentTable
+                            {
+                                TypeID = 7,
+                                Document_Data = buffer,
+                                Document_Name = file.FileName,
+                                Content_Type = file.ContentType,
+                                ReferenceID = contractID,
+                                DateStamp = DateTime.Today,
+                                VendorID = vendorID
 
-                            dc.DocumentTables.Add(
-                                new DocumentTable
-                                {
-                                    TypeID = 6,
-                                    Document_Data = buffer,
-                                    Document_Name = file.FileName,
-                                    Content_Type = file.ContentType,
-                                    ReferenceID = rId,
-                                    DateStamp = DateTime.Today,
-                                    VendorID = vendorID
-
-
-
-                                });
-                            dc.SaveChanges();
-                            PopulateUploadedFiles();
-                        }
+                            });
+                        dc.SaveChanges();
+                        PopulateUploadedFiles();
                     }
-                    RFP r = new RFP();
-                    decimal proposedPrice = Convert.ToDecimal(Request.Form[txtProposedPrice.UniqueID]);
-                    r.UpdateRFPStatus(proposedPrice, rId, vendorID);//updates the complete status on VendorRFITable
-                    Page.Response.Redirect("VendorRFPList.aspx");
+                }
 
-                }
-                else
-                {
-                    ErrorMessage.Visible = true;
-                    FailureText.Text = "***2 Files are required to submit the RFP";
-                }
+
+                Contract c = new Contract();
+
+                c.UpdateContractStatus(contractID, vendorID);//updates the complete status on VendorRFITable
+                Page.Response.Redirect("VendorContractList.aspx");
 
             }
-
         }
-
-
+        
 
         protected void listFiles_ItemCommand(object source, DataListCommandEventArgs e)
         {
@@ -218,7 +196,6 @@ namespace BHSCMSApp.Dashboard.VendorRFP
             }
         }
 
-
-
     }
+
 }

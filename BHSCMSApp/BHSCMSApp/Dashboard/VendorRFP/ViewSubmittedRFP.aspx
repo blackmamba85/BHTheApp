@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardVendor.Master" AutoEventWireup="true" CodeBehind="ReplyRFI.aspx.cs" Inherits="BHSCMSApp.Dashboard.VendorRFI.ReplyRFI" %>
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardVendor.Master" AutoEventWireup="true" CodeBehind="ViewSubmittedRFP.aspx.cs" Inherits="BHSCMSApp.Dashboard.VendorRFP.ViewSubmittedRFP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" Visible="false" />
@@ -9,52 +7,42 @@
           <div class="col-md-12">
             					
 						<fieldset>
-							  <div style="width:20%; margin: 0 auto"><img  src="../../img/rfidetails.png" class="img-responsive" alt="Responsive image"/></div>
-
-                            <br />
-                             
-                            <hr />
-                             <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
-                             <p class="text-danger">
-                            <asp:Literal runat="server" ID="FailureText" />
-                                  </p>
-                            </asp:PlaceHolder>	
-                           <%--<div class="form-group">
-							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI ID</asp:Label>
-								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="rfiid" ReadOnly="true"/>
-								</div>
-							</div>--%>
+						  <div style="width:20%; margin: 0 auto"><img  src="../../img/submittedrfp.png" class="img-responsive" alt="Responsive image"/></div>
+                            <br />                             
+                            <hr />                          
                             <br />                            
                             <br />
 							<div class="form-group">
-							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category</asp:Label>
+							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category:</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtcategory" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
-                            <br />
-                           
+                            <br />                           
                             <br />
                             <div class="form-group">
-							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description</asp:Label>
+							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description:</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="product" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtproduct" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
+                            <br />                           
                             <br />
-                           
-                            <br />
-                             
-                            <hr />
-                            
+                             <div class="form-group">
+							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Proposed Price:</asp:Label>
+								 <div class="col-md-8">   
+									<asp:TextBox runat="server" id="txtProposedPrice" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+								</div>
+							</div>
+                            <br />                           
+                            <br />                             
+                            <hr />                            
                           <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
                         <div class="col-md-8">               
                             <asp:TextBox runat="server" ID="startdate" ReadOnly="true" BorderColor="Transparent"/>                       
                         </div>
-                         </div>
-     
+                         </div> 
 
                          <br />
                          <br />
@@ -69,7 +57,7 @@
                              <br />
                             <hr />
                           <div class="form-group">
-                            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Download RFI documents</asp:Label>
+                            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Submitted Documents:</asp:Label>
                         
                    <%-- Add a Datalist for show uploaded files --%>
         <asp:DataList ID="listFiles" runat="server" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="listFiles_ItemCommand">
@@ -93,26 +81,11 @@
                          </div> 
 
                            <br />		
-                              <br />		
-							<hr />
-                            <div class="form-group">
-                        <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true" ID="lbluploadeddoc">Upload requested documents</asp:Label>
-                       <div class="col-md-8">               
-                      <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />  
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI documents" 
-                       ControlToValidate="docUpload"></asp:RequiredFieldValidator>
-                                            
-            </div>
-         </div>
-								  <br />	
-                              <br />	
-                              <br />	
-                            <hr />
-                             
+                          
                             
-                            		
+									
+                            <hr />			
 							<div class="form-actions">
-								<asp:Button runat="server" Text="Submit" ID="savebtn" class="btn btn-info" OnClick="savebtn_Click" Visible="true"/>
                                 <asp:Button runat="server" Text="Back to List" ID="cancelbtn" class="btn" OnClick="cancelbtn_Click" CausesValidation="false"/>
 							</div>
 

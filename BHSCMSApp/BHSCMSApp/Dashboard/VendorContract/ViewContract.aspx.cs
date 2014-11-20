@@ -9,30 +9,27 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BHSCMSApp.Dashboard.VendorRFI
+namespace BHSCMSApp.Dashboard.VendorContract
 {
-    public partial class ViewSubmittedRFI : Page
+    public partial class ViewContract : System.Web.UI.Page
     {
-        int rId;
+        int contractID;
         int vendorID;
-        
-
+        static List<DocumentFile> fileList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            rId = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
+            contractID = Convert.ToInt32(Request.QueryString["contractid"]);//gets and convert to int the rfiif passed in the querystring
             vendorID = Convert.ToInt32(Request.QueryString["vId"]);
-                      
 
-            GetRFIData();
+            GetContractData();
 
             if (!IsPostBack)
             {
                 PopulateUploadedFiles();
 
-               
-            }       
-            
+
+            }
         }
 
 
@@ -40,13 +37,13 @@ namespace BHSCMSApp.Dashboard.VendorRFI
         {
             using (BHSCMS_Entities dc = new BHSCMS_Entities())
             {
-                List<DocumentTable> allFiles = dc.DocumentTables.Where(a => (a.ReferenceID == rId && a.TypeID == 5 && a.VendorID==vendorID)).ToList();
+                List<DocumentTable> allFiles = dc.DocumentTables.Where(a => a.ReferenceID == contractID && a.TypeID == 7).ToList();
                 listFiles.DataSource = allFiles;
                 listFiles.DataBind();
             }
         }
 
-        protected void GetRFIData()
+        protected void GetContractData()
         {
 
             try
@@ -56,18 +53,22 @@ namespace BHSCMSApp.Dashboard.VendorRFI
                 SqlConnection conn = new SqlConnection(connString);
 
                 conn.Open();
-                string strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorRFIDocQry.sql"), rId);
+                string strSQL = string.Format(FunctionsHelper.GetFileContents("SQL/VendorContractDocQry.sql"), contractID);
                 SqlCommand command = new SqlCommand(strSQL, conn);
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    this.txtcategory.Text = reader["Category"].ToString();
-                    this.txtproduct.Text = reader["ProductDescription"].ToString();
+                    this.txtTitle.Text = reader["Title"].ToString();
+                    this.txtDescription.Text = reader["Description"].ToString();
+                    this.category.Text = reader["Category"].ToString();
+                    this.txtProduct.Text = reader["ProductDescription"].ToString();
+                    this.txtContractPrice.Text = string.Format("{0:C2}", Convert.ToDecimal(reader["ContractPrice"].ToString()));
                     this.startdate.Text = Convert.ToDateTime(reader["StartDate"].ToString()).ToShortDateString();
                     this.enddate.Text = Convert.ToDateTime(reader["EndDate"].ToString()).ToShortDateString();
-                  
+
+
                 }
 
             }
@@ -81,8 +82,11 @@ namespace BHSCMSApp.Dashboard.VendorRFI
 
         protected void cancelbtn_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("VendorRFIList.aspx");
+            Page.Response.Redirect("VendorContractList.aspx");
+
         }
+
+
 
         protected void listFiles_ItemCommand(object source, DataListCommandEventArgs e)
         {
@@ -125,8 +129,6 @@ namespace BHSCMSApp.Dashboard.VendorRFI
 
             }
         }
-
-
 
 
     }

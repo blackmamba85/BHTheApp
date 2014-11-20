@@ -6,7 +6,8 @@
      <div class="row" style="background-color:white; width:90%;  margin-left:10px">
           <div class="col-md-12">
               
-      <h4>My RFPs</h4>
+        <div style="width:15%; margin-left:10px"><img  src="../../img/MyRfps.png" class="img-responsive" alt="Responsive image"/></div>
+
     <hr />        
               <div class="form-group">     
                <asp:Label runat="server" AssociatedControlID="ddpermissionFilter" CssClass="col-md-2 control-label" Width="20%">Filter by Permission:</asp:Label>
@@ -60,7 +61,7 @@
                 </div>
        
          </div>
-    <br />
+      <br />
     <br />   
     <br />
     <br />  
@@ -68,7 +69,11 @@
     <br />
     <br /> 
     <br /> 
-
+      <br />
+    <br />   
+    <br />
+    <br />  
+    <br />   
 
 
 
