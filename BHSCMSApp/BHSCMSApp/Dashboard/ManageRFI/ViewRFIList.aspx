@@ -1,7 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/DashboardAdmin.Master" AutoEventWireup="true" CodeBehind="ViewRFIList.aspx.cs" Inherits="BHSCMSApp.Dashboard.ManageRFI.ViewRFIList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-    
+    <script>
+        function deletePrompt()
+        {
+            if(confirm("Are you sure?")) //If user selects yes
+            {
+                document.getElementById("ClientMediate").value = true;
+            }
+            else//If user selects no
+            {
+                document.getElementById("ClientMediate").value = false;
+            }
+        }
+    </script>
+    <asp:HiddenField ID="ClientMediate" runat="server" ClientIDMode="Static" />
      <div class="row" style="background-color:white; width:100%">
           <div class="col-md-12">
               
@@ -42,8 +54,9 @@
                                 </ItemTemplate>
                             </asp:TemplateField>     
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Delete">
-                                <ItemTemplate>                                     
-                                    <asp:HyperLink ID="DeleteLink" runat="server" Text="Delete"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                
+                                <ItemTemplate>                                 
+                                    <%--<asp:HyperLink ID="DeleteLink" runat="server" Text="Delete"> <span class="glyphicon glyphicon-trash"></span></asp:HyperLink>                                --%>
+                                    <asp:LinkButton ID="btnDelete" runat="server" CssClass="glyphicon glyphicon-trash" OnClick="btnDelete_Click" OnClientClick="deletePrompt();"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>                           
                               <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>

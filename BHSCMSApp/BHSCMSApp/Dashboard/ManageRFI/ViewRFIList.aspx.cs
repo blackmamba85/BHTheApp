@@ -38,6 +38,7 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
+                
                 dt = ds.Tables[0];
                 //Bind the fetched data to gridview
                 GridView1.DataSource = dt;
@@ -179,9 +180,54 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
                 delete.NavigateUrl = String.Format("/Dashboard/ManageRFI/DeleteRFI.aspx?rfiid={0}", rfiId);
 
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+                btnDelete.CommandArgument = rfiId.ToString();
+
             }
 
         }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = sender as LinkButton;
+            int rfiID = int.Parse(btn.CommandArgument.ToString());
+
+            string qry = "Delete From RFITable Where RFI_ID = @rfiID";
+            string qry2 = "Delete From DocumentTable Where ReferenceID = @rfiID AND TypeID = 2";
+            if(bool.Parse(ClientMediate.Value))//Retrieves value from javascript popup to ensure that user wants to delete RFI
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+                {
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand(qry, con))
+                    {
+                        com.Parameters.AddWithValue("@rfiID", rfiID);
+                        com.ExecuteNonQuery();
+                    }
+                    using (SqlCommand com = new SqlCommand(qry2, con))
+                    {
+                        com.Parameters.AddWithValue("@rfiID", rfiID);
+                        com.ExecuteNonQuery();
+                    }
+                }
+
+                if (Request.Form[ddstatusfilter.UniqueID] == "2")
+                {
+                    BindGridOpenedRFI();
+
+                }
+                else if (Request.Form[ddstatusfilter.UniqueID] == "3")
+                {
+                    BindGridClosedRFI();
+                }
+                else
+                {
+                    BindGrid();
+                }
+            }
+        }
+
+        
 
     }
 }
