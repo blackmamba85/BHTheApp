@@ -124,7 +124,7 @@
        
                <div id='cssmenu'>
                 <ul>
-                   <li><a href='/Dashboard/DashboardAdmin'><span>Dashboard</span></a></li>
+                   <li><a href='/Dashboard/DashboardAdmin'><span class="glyphicon glyphicon-home"> </span> Home</a></li>
                    <li class='active has-sub'><a href='#'><span>Manage Users</span></a>
                       <ul>
                          <li><a href='/Dashboard/Account/ManageEmployees'><span>Employees</span></a></li>

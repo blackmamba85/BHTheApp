@@ -9,26 +9,50 @@ namespace BHSCMSApp.Dashboard
 {
     public partial class DashboardVendor1 : System.Web.UI.Page
     {
-        public static List<DateTime> list = new List<DateTime>();
+        
+        RFI i = new RFI();
+        RFP p = new RFP();
+        Contract ct = new Contract();
+      
+        int incompleteRfi;
+        int incompleteRfp;
+        int incompleteContracts;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            list.Add(DateTime.Today);
-            list.Add(DateTime.Today.AddDays(2));
-            list.Add(DateTime.Today.AddDays(4));
-            list.Add(DateTime.Today.AddDays(6));
+            SetLabels();
 
-
-            foreach (DateTime dt in list)
+            if (!Page.IsPostBack)
             {
-                calendar.SelectedDates.Add(dt);
+                SetLabels();
             }
 
-            day1.Text = string.Format("Neuro Sponges RFI closes on {0}", DateTime.Today.ToShortDateString());
-            day2.Text = string.Format("Ace Bandages contract expires on {0}", DateTime.Today.AddDays(2).ToShortDateString());
-            day3.Text = string.Format("Anesthesia Supplies RFP closes on {0}", DateTime.Today.AddDays(4).ToShortDateString());
-            day4.Text = string.Format("Disposable sharps RFP closes on {0}", DateTime.Today.AddDays(6).ToShortDateString());
+        }
+
+
+        protected void SetLabels()
+        {
+            int userid = UserInfoBoxControl.UserID;
+
+            incompleteRfi = i.CountIncompleteRFI(userid);
+            incompleteRfp = p.CountIncompleteRFP(userid);
            
+            if (incompleteRfi > 0)
+            {
+                rfilink.Text = string.Format("You have {0} incompleted RFI", incompleteRfi);
+            }
+
+            if (incompleteRfp > 0)
+            {
+                rfplink.Text = string.Format("You have {0} incompleted RFP", incompleteRfp);
+            }
+
+            if (incompleteContracts > 0)
+            {
+                contractlink.Text = string.Format("You have {0} expired contracts", incompleteContracts);
+            }
+
+
 
         }
     }

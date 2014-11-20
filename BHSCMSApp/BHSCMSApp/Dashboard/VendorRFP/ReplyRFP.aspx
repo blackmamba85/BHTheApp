@@ -7,7 +7,8 @@
           <div class="col-md-12">
             					
 						<fieldset>
-							<h4 style="text-align:center">RFP Details</h4>
+						  <div style="width:20%; margin: 0 auto"><img  src="../../img/rfpdetails.png" class="img-responsive" alt="Responsive image"/></div>
+
                             <br />
                              
                             <hr />

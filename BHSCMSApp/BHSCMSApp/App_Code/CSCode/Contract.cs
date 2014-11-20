@@ -125,6 +125,50 @@ namespace BHSCMSApp
             return count;
         }
 
+        //this method will return the number of incomplete Contracts for the vendor using userID
+        public int CountIncompleteContract(int userid)
+        {
+            int count;
+            string connectionString = GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = string.Format("select Count(ContractID) as Count from BHSCMS.dbo.ContractTable where IsCompleted=0 and V.UserID={0}", userid);
+                SqlCommand command = new SqlCommand(qry, connection);
+                connection.Open();
+                count = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            return count;
+        }
+
+        //Updates Contract status
+        public void UpdateContractStatus( int contractid, int vendorId)
+        {
+
+            string connectionString = GetConnectionString();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string updateQry = "update BHSCMS.dbo.ContractTable set IsCompleted=1 where ContractID=@id and VendorID=@vendorid";
+
+                    SqlCommand updateCmd = new SqlCommand(updateQry, connection);                   
+                    updateCmd.Parameters.AddWithValue("@id", contractid);
+                    updateCmd.Parameters.AddWithValue("@vendorid", vendorId);
+                    updateCmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                //System.Console.Error.Write(e.Message);
+
+            }
+
+        }
+
 
 
         //this method returns BHSCMS connection string

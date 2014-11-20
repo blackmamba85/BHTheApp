@@ -180,6 +180,23 @@ namespace BHSCMSApp
         }
 
 
+        //this method will return the number incomplete RFP for the vendor using userID
+        public int CountIncompleteRFP(int userid)
+        {
+            int count;
+            string connectionString = GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = string.Format("select Count(RFP_ID) as Count from BHSCMS.dbo.VendorRFPTable VR inner join BHSCMS.dbo.VendorTable V on VR.VendorID=V.VendorID  where IsCompleted=0 and V.UserID={0}", userid);
+                SqlCommand command = new SqlCommand(qry, connection);
+                connection.Open();
+                count = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            return count;
+        }
+
+
         //this method returns BHSCMS connection string
         protected string GetConnectionString()
         {

@@ -5,7 +5,7 @@
     <div class="row" style="background-color:white; width:100%">
 
 
-          <div class="col-md-6">
+          <div class="col-md-7">
               
               
               <div style="width:70%; margin-left:10px"><img  src="../img/notifications.png" class="img-responsive" alt="Responsive image" width="90%"/></div>
@@ -31,8 +31,8 @@
               
           </div>--%>
 
-        <div class="col-md-6">
-            <div style="width:70%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image" width="50%"/></div>
+        <div class="col-md-5">
+            <div style="width:50%; margin-left:10px"><img  src="../img/upcoming.png" class="img-responsive" alt="Responsive image"/></div>
 
             <%--<h4> Upcoming Events:</h4>--%>
             <hr />

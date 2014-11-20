@@ -13,6 +13,69 @@ namespace BHSCMSApp.Dashboard {
     public partial class DashboardVendor1 {
         
         /// <summary>
+        /// UserInfoBoxControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BHSCMSApp.Controls.UserInfoBoxControl UserInfoBoxControl;
+        
+        /// <summary>
+        /// rfilink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink rfilink;
+        
+        /// <summary>
+        /// rfi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rfi;
+        
+        /// <summary>
+        /// rfplink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink rfplink;
+        
+        /// <summary>
+        /// rfp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rfp;
+        
+        /// <summary>
+        /// contractlink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink contractlink;
+        
+        /// <summary>
+        /// contract control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label contract;
+        
+        /// <summary>
         /// calendar control.
         /// </summary>
         /// <remarks>
@@ -22,39 +85,30 @@ namespace BHSCMSApp.Dashboard {
         protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
-        /// day1 control.
+        /// lblRficlosing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day1;
+        protected global::System.Web.UI.WebControls.Label lblRficlosing;
         
         /// <summary>
-        /// day2 control.
+        /// lblRfpclosing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day2;
+        protected global::System.Web.UI.WebControls.Label lblRfpclosing;
         
         /// <summary>
-        /// day3 control.
+        /// lblContracts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day3;
-        
-        /// <summary>
-        /// day4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label day4;
+        protected global::System.Web.UI.WebControls.Label lblContracts;
     }
 }

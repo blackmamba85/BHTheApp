@@ -330,7 +330,12 @@
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
     <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
     <Content Include="Dashboard\Tools\SQL\ReportDateRange.sql" />
+    <Content Include="Dashboard\VendorContract\SQL\ViewVendorContracts.sql" />
+    <Content Include="Dashboard\VendorContract\SQL\ViewVendorContractsExisting.sql" />
+    <Content Include="Dashboard\VendorContract\SQL\ViewVendorContractsExpired.sql" />
+    <Content Include="Dashboard\VendorContract\SubmitContract.aspx" />
     <Content Include="Dashboard\VendorContract\VendorContractList.aspx" />
+    <Content Include="Dashboard\VendorContract\ViewContract.aspx" />
     <Content Include="Dashboard\VendorRFI\ReplyRFI.aspx" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIDocQry.sql" />
     <Content Include="Dashboard\VendorRFI\SQL\VendorRFIList.sql" />
@@ -339,20 +344,28 @@
     <Content Include="Dashboard\VendorRFI\VendorRFIList.aspx" />
     <Content Include="Dashboard\VendorRFI\ViewSubmittedRFI.aspx" />
     <Content Include="Dashboard\VendorRFP\ReplyRFP.aspx" />
+    <Content Include="Dashboard\VendorContract\SQL\VendorContractDocQry.sql" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPDocQry.sql" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPList.sql" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPListParticipate.sql" />
     <Content Include="Dashboard\VendorRFP\SQL\VendorRFPListView.sql" />
+    <Content Include="Dashboard\VendorRFP\SQL\VendorRFPSubmitted.sql" />
     <Content Include="Dashboard\VendorRFP\VendorRFPList.aspx" />
+    <Content Include="Dashboard\VendorRFP\ViewSubmittedRFP.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
-    <Content Include="img\effective.png" />
+    <Content Include="img\contractdetails.png" />
     <Content Include="img\employees.png" />
+    <Content Include="img\MyRfi.png" />
+    <Content Include="img\MyRfps.png" />
     <Content Include="img\notifications.png" />
-    <Content Include="img\padlock.png" />
+    <Content Include="img\rfidetails.png" />
     <Content Include="img\rfis.png" />
+    <Content Include="img\rfpdetails.png" />
+    <Content Include="img\submittedcontract.png" />
+    <Content Include="img\submittedrfi.png" />
+    <Content Include="img\submittedrfp.png" />
     <Content Include="img\vendors.png" />
-    <Content Include="img\purple.png" />
     <Content Include="img\business.jpg" />
     <Content Include="img\calendar.gif" />
     <Content Include="img\contract.jpg" />
@@ -371,13 +384,8 @@
     <Content Include="Dashboard\Account\SQL\UserEmployeeDetails.sql" />
     <Content Include="Dashboard\Account\SQL\UserVendorDetails.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="img\BHLOUTM.jpg" />
     <Content Include="img\footer.png" />
     <Content Include="img\footer2.png" />
-    <Content Include="img\green.jpg" />
-    <Content Include="img\green1.jpg" />
-    <Content Include="img\green2.jpg" />
-    <Content Include="img\green3.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\p6_%402X.png" />
     <Content Include="img\upcoming.png" />
@@ -739,12 +747,26 @@
     <Compile Include="Dashboard\Tools\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\VendorContract\SubmitContract.aspx.cs">
+      <DependentUpon>SubmitContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorContract\SubmitContract.aspx.designer.cs">
+      <DependentUpon>SubmitContract.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\VendorContract\VendorContractList.aspx.cs">
       <DependentUpon>VendorContractList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Dashboard\VendorContract\VendorContractList.aspx.designer.cs">
       <DependentUpon>VendorContractList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorContract\ViewContract.aspx.cs">
+      <DependentUpon>ViewContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorContract\ViewContract.aspx.designer.cs">
+      <DependentUpon>ViewContract.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\VendorRFI\ReplyRFI.aspx.cs">
       <DependentUpon>ReplyRFI.aspx</DependentUpon>
@@ -780,6 +802,13 @@
     </Compile>
     <Compile Include="Dashboard\VendorRFP\VendorRFPList.aspx.designer.cs">
       <DependentUpon>VendorRFPList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\ViewSubmittedRFP.aspx.cs">
+      <DependentUpon>ViewSubmittedRFP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\VendorRFP\ViewSubmittedRFP.aspx.designer.cs">
+      <DependentUpon>ViewSubmittedRFP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

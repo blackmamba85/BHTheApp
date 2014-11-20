@@ -5,9 +5,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
-         <h3 class="headers">Category Addition</h3> 
+         <h3 class="headers" style="margin-left:20px">Category Addition Petition Request</h3> 
           <hr />
-         <p>Please complete the form below.</p>
+         <p style="margin-left:20px">*Please complete the form below to request a change in your product categories.</p>
          <br />   
 
         <div class="form-group">
@@ -50,14 +50,17 @@
 
         <%-- This needs to be implemented. Where is the file upload codebehind? --%>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="FileUpload" CssClass="col-md-8 control-label">Please Select Files:</asp:Label>
-            <asp:FileUpload runat="server" ID="FileUpload" CssClass="form-control" Width="50%" />
+                        <asp:Label runat="server" AssociatedControlID="FileUpload" CssClass="col-md-8 control-label">Please Select Files:</asp:Label>
 
+            <div class="col-md-8">
+            <asp:FileUpload runat="server" ID="FileUpload" />
+            </div>
+            
         </div>
-
-
+         <br />
+        <br />
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="chkCommodities" CssClass="col-md-6 control-label">Categories</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="chkCommodities" CssClass="col-md-8 control-label">Categories</asp:Label>
             <div class="col-md-8">
                 <asp:DropDownCheckBoxes ID="chkCommodities" runat="server" AddJQueryReference="True" UseSelectAllNode="True" CssClass="col-md-6 control-label">
                 <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="130" />
@@ -65,21 +68,25 @@
                 </asp:DropDownCheckBoxes>
                 <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="chkCommodities" ValidationGroup="request"
                     CssClass="text-danger" ErrorMessage="Please Select at least one Category." />--%>
+                <br />
+        <br />
+        <br />
+        <br />
             </div>
         </div>
-
+          <br />
         <br />
         <br />
         <br />
    
 
-        
-            <div class="col-md-6">
-                <asp:Button runat="server" OnClick="CreateAddition_Click" Text="Submit" Width="40%" CssClass="btn btn-info" CausesValidation="true" ValidationGroup="request" />
+        <div class="form-group">
+            <div class="col-md-8">
+                <asp:Button runat="server" OnClick="CreateAddition_Click" Text="Submit" CssClass="btn btn-info" CausesValidation="true" ValidationGroup="request" />
             </div>
         </div>
 
-        
+        </div>
 
 
     <script type="text/javascript">
@@ -93,5 +100,10 @@
     <br />
         <br />
         <br />
+    <br />
+        <br />
+        <br />
+<br />
+        
 
 </asp:Content>
