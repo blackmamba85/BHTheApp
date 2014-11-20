@@ -58,21 +58,21 @@ namespace BHSCMSApp.Dashboard.Request {
         protected global::System.Web.UI.WebControls.TextBox Reason;
         
         /// <summary>
-        /// FileUpload control.
+        /// Category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload;
+        protected global::System.Web.UI.WebControls.TextBox Category;
         
         /// <summary>
-        /// chkCommodities control.
+        /// lblResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Saplin.Controls.DropDownCheckBoxes chkCommodities;
+        protected global::System.Web.UI.WebControls.Label lblResult;
     }
 }

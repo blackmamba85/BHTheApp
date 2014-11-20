@@ -21,9 +21,9 @@
 
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="PhoneNumber" CssClass="col-md-6 control-label">Contact Number*</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="PhoneNumber"  CssClass="col-md-6 control-label">Contact Number*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="PhoneNumber" MaxLength="10" CssClass="form-control"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PhoneNumber" ValidationGroup="request" 
                     CssClass="text-danger" ErrorMessage="The contact number field is required." />
             </div>
@@ -42,29 +42,26 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Reason" CssClass="col-md-6 control-label">Please give a reason for the addition:*</asp:Label>
             <div class="col-md-8">
-                <asp:TextBox runat="server" ID="Reason" CssClass="form-control" MaxRow="5" Columns="5" TextMode="MultiLine" style="resize:none" Width="60%"/>
+                <asp:TextBox runat="server" ID="Reason" CssClass="form-control" MaxRow="5" Columns="5" TextMode="MultiLine" MaxLength="500" style="resize:none" Width="60%"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Reason" ValidationGroup="request"
                     CssClass="text-danger" ErrorMessage="A reason for a Category Addition is required." />
             </div>
         </div>
 
         <%-- This needs to be implemented. Where is the file upload codebehind? --%>
-        <div class="form-group">
+       <%-- <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FileUpload" CssClass="col-md-8 control-label">Please Select Files:</asp:Label>
             <asp:FileUpload runat="server" ID="FileUpload" CssClass="form-control" Width="50%" />
 
-        </div>
+        </div>--%>
 
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="chkCommodities" CssClass="col-md-6 control-label">Categories</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Category" CssClass="col-md-6 control-label">Category:</asp:Label>
             <div class="col-md-8">
-                <asp:DropDownCheckBoxes ID="chkCommodities" runat="server" AddJQueryReference="True" UseSelectAllNode="True" CssClass="col-md-6 control-label">
-                <Style SelectBoxWidth="300" DropDownBoxBoxWidth="300" DropDownBoxBoxHeight="130" />
-                <Texts SelectBoxCaption="Select from list" />
-                </asp:DropDownCheckBoxes>
-                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="chkCommodities" ValidationGroup="request"
-                    CssClass="text-danger" ErrorMessage="Please Select at least one Category." />--%>
+                <asp:TextBox runat="server" ID="Category" CssClass="form-control" MaxLength="50" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Category" ValidationGroup="request"
+                    CssClass="text-danger" ErrorMessage="A category name is required." />
             </div>
         </div>
 
@@ -76,6 +73,9 @@
         
             <div class="col-md-6">
                 <asp:Button runat="server" OnClick="CreateAddition_Click" Text="Submit" Width="40%" CssClass="btn btn-info" CausesValidation="true" ValidationGroup="request" />
+            </div>
+            <div class="col-md-6">
+                <asp:Label ID="lblResult" runat="server" CssClass="text-danger"></asp:Label>
             </div>
         </div>
 
