@@ -302,6 +302,8 @@
     <Content Include="Dashboard\Account\VendorProfile.aspx" />
     <Content Include="Dashboard\DashboardVendor.aspx" />
     <Content Include="Dashboard\ManageCode\RegCode.aspx" />
+    <Content Include="Dashboard\ManageContract\SQL\ContractDetails.sql" />
+    <Content Include="Dashboard\ManageContract\ContractWithVendor.aspx" />
     <Content Include="Dashboard\ManageContract\EditContract.aspx" />
     <Content Include="Dashboard\ManageContract\NewContract.aspx" />
     <Content Include="Dashboard\ManageContract\SQL\ViewContracts.sql" />
@@ -310,14 +312,20 @@
     <Content Include="Dashboard\ManageContract\ViewContracts.aspx" />
     <Content Include="Dashboard\ManageRFI\EditRFI.aspx" />
     <Content Include="Dashboard\ManageRFI\NewRFI.aspx" />
+    <Content Include="Dashboard\ManageRFI\RFIResponses.aspx" />
     <Content Include="Dashboard\ManageRFI\SQL\RFICategoryVendors.sql" />
+    <Content Include="Dashboard\ManageRFI\SQL\RFIResponses.sql" />
+    <Content Include="Dashboard\ManageRFI\SQL\VendorRFIDocQry.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFI.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIClosed.sql" />
     <Content Include="Dashboard\ManageRFI\SQL\ViewRFIOpened.sql" />
     <Content Include="Dashboard\ManageRFI\ViewRFIList.aspx" />
     <Content Include="Dashboard\ManageRFP\EditRFP.aspx" />
     <Content Include="Dashboard\ManageRFP\NewRFP.aspx" />
+    <Content Include="Dashboard\ManageRFP\RFPResponses.aspx" />
+    <Content Include="Dashboard\ManageRFP\SQL\RFPResponses.sql" />
     <Content Include="Dashboard\ManageRFP\SQL\RFP_RFIVendors.sql" />
+    <Content Include="Dashboard\ManageRFP\SQL\VendorRFPDocQry.sql" />
     <Content Include="Dashboard\ManageRFP\SQL\ViewRFP.sql" />
     <Content Include="Dashboard\ManageRFP\SQL\ViewRFPClosed.sql" />
     <Content Include="Dashboard\ManageRFP\SQL\ViewRFPOpened.sql" />
@@ -662,6 +670,13 @@
     <Compile Include="Dashboard\ManageCode\RegCode.aspx.designer.cs">
       <DependentUpon>RegCode.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\ManageContract\ContractWithVendor.aspx.cs">
+      <DependentUpon>ContractWithVendor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageContract\ContractWithVendor.aspx.designer.cs">
+      <DependentUpon>ContractWithVendor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\ManageContract\EditContract.aspx.cs">
       <DependentUpon>EditContract.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -697,6 +712,13 @@
     <Compile Include="Dashboard\ManageRFI\NewRFI.aspx.designer.cs">
       <DependentUpon>NewRFI.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\ManageRFI\RFIResponses.aspx.cs">
+      <DependentUpon>RFIResponses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFI\RFIResponses.aspx.designer.cs">
+      <DependentUpon>RFIResponses.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\ManageRFI\ViewRFIList.aspx.cs">
       <DependentUpon>ViewRFIList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -717,6 +739,13 @@
     </Compile>
     <Compile Include="Dashboard\ManageRFP\NewRFP.aspx.designer.cs">
       <DependentUpon>NewRFP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\RFPResponses.aspx.cs">
+      <DependentUpon>RFPResponses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\ManageRFP\RFPResponses.aspx.designer.cs">
+      <DependentUpon>RFPResponses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\ManageRFP\ViewRFP.aspx.cs">
       <DependentUpon>ViewRFP.aspx</DependentUpon>

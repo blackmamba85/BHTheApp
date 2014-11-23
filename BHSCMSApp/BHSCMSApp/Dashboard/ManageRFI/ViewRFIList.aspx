@@ -28,6 +28,8 @@
                         DataKeyNames="RFI_ID, UserID" CssClass="table" HeaderStyle-BackColor="#40B3DF" HeaderStyle-Font-Bold="true" HeaderStyle-ForeColor="White">
                          <pagersettings mode="NextPreviousFirstLast" position="Bottom" pagebuttoncount="10"/>
 
+                             <pagersettings mode="Numeric" position="Bottom" pagebuttoncount="10"/>
+
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center"/>
                         
                          <Columns>

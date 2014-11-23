@@ -151,9 +151,10 @@ namespace BHSCMSApp
                 {
                     connection.Open();
 
-                    string updateQry = "update BHSCMS.dbo.VendorRFITable set IsCompleted=1 where RFI_ID=@id and VendorID=@vendorid";
+                    string updateQry = "update BHSCMS.dbo.VendorRFITable set IsCompleted=1, SubmittedDate=@date where RFI_ID=@id and VendorID=@vendorid";
 
-                    SqlCommand updateCmd = new SqlCommand(updateQry, connection);                    
+                    SqlCommand updateCmd = new SqlCommand(updateQry, connection);
+                    updateCmd.Parameters.AddWithValue("@date", DateTime.Today);
                     updateCmd.Parameters.AddWithValue("@id", rfiId);
                     updateCmd.Parameters.AddWithValue("@vendorid", vendorId);
                     updateCmd.ExecuteNonQuery();

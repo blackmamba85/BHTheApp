@@ -28,9 +28,9 @@
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center"/>
                         
                          <Columns>
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Responses">
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="View Contract">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="ResponsesLink" runat="server" Text="View Responses"> <span class="glyphicon glyphicon-list-alt"></span></asp:HyperLink>
+                                    <asp:HyperLink ID="ResponsesLink" runat="server" Text="View Contract"> <span class="glyphicon glyphicon-file"></span></asp:HyperLink>
                                 </ItemTemplate>                               
                             </asp:TemplateField>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Modify">
@@ -45,6 +45,7 @@
                             </asp:TemplateField>                           
                               <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
                             <asp:BoundField DataField="ContractID" HeaderText="ContractID" Visible="false" />
+                             <asp:BoundField DataField="IsCompleted" HeaderText="Status" />
                             <asp:BoundField DataField="Title" HeaderText="Title"/>
                               <asp:BoundField DataField="Name" HeaderText="Created By"/>
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
@@ -52,7 +53,8 @@
                             <asp:BoundField DataField="VendorID" HeaderText="VendorID" Visible="false" />
                             <asp:BoundField DataField="CompanyName" HeaderText="Vendor" />
                              <asp:BoundField DataField="ContractPrice" HeaderText="Contract Price" DataFormatString="{0:C}"  />
-                             <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}"  />
+                         
+                             
 
                         </Columns>
                     </asp:GridView>

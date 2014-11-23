@@ -183,17 +183,32 @@ namespace BHSCMSApp.Dashboard.ManageContract
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                string complete = DataBinder.Eval(e.Row.DataItem, "IsCompleted").ToString();
 
                 int contractid = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "ContractID"));//gets the contractid from the row clicked on grid
-
+                int vendorid = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "VendorID"));//gets the vendorid from the row clicked on grid
+               
                 HyperLink details = (HyperLink)e.Row.FindControl("ResponsesLink");
-                details.NavigateUrl = String.Format("/Dashboard/ManageContract/VendorContract.aspx?contractid={0}", contractid);//
+                details.NavigateUrl = String.Format("/Dashboard/ManageContract/ContractWithVendor.aspx?cid={0}&vid={1}", contractid, vendorid);//
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
                 edit.NavigateUrl = String.Format("/Dashboard/ManageContract/EditContract.aspx?contractid={0}", contractid);//                
 
                 HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
                 delete.NavigateUrl = String.Format("/Dashboard/ManageContract/DeleteContract.aspx?contractid={0}", contractid);
+
+                if (complete != "True")
+                {
+
+                    e.Row.Cells[4].Text = "Incomplete";
+                    details.Visible = false;
+                }
+                else
+                {
+                    e.Row.Cells[4].Text = "Completed";
+                    e.Row.Cells[4].ForeColor = System.Drawing.Color.FromArgb(2, 160, 91); // Column color
+                    edit.Visible = false;
+                }
 
             }
 

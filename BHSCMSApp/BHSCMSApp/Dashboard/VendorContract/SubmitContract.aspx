@@ -93,7 +93,7 @@
                   
                     <tr>
                         <td>
-                         <span class="glyphicon glyphicon-download"></span>   <asp:LinkButton ID="lbtnDownload" runat="server" CommandName="Download" CommandArgument=<%#Eval("DocID")%>>Download</asp:LinkButton></td>
+                         <span style="color:#529ABB" class="glyphicon glyphicon-download"></span>   <asp:LinkButton ID="lbtnDownload" ForeColor="#529ABB" runat="server" CommandName="Download" CommandArgument=<%#Eval("DocID")%>>Download</asp:LinkButton></td>
                     </tr>
                 </table>
             </ItemTemplate>

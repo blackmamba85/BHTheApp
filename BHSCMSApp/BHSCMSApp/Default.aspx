@@ -19,19 +19,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="/img/baptisthealthrichmond.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 300px;  max-height: 300px;">
+      <img src="/img/baptisthealthrichmond.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 350px;  max-height: 350px;">
       <div class="carousel-caption">
           <h3></h3>
       </div>
     </div>
     <div class="item">
-      <img src="/img/business.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 300px;  max-height: 300px;">
+      <img src="/img/business.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 350px;  max-height: 350px;">
       <div class="carousel-caption">
           <h3></h3>
       </div>
     </div>
     <div class="item">
-        <img src="/img/contract.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 300px;  max-height: 300px;">     
+        <img src="/img/contract.jpg" alt="..." class="peopleCarouselImg" style="width: 100%;  height: 350px;  max-height: 350px;">     
       <div class="carousel-caption">          
       </div>
     </div>
@@ -74,7 +74,7 @@
               This system allows Baptists Health to connect with its vendors in a streamlined way. This system allows for exchanges to be centralized to save time for the vendors and Baptist Health. This system is used for the process of analyzing vendors’ proposals and negotiating with them to determine the best option that provides Baptist Health the greatest cost savings and also satisfy the necessary attributes.
                
             </p>
-             <br />
+             
             <p>Should you have any questions, please do not hesitate to contact us through our contact page. We appreciate your business and hope you enjoy the site. </p>
             
         </div>

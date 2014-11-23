@@ -128,18 +128,18 @@
     <div id="footer" class="panel-footer">
                 <div class=".panel-group">
             
-                   <ul >
-                        <li style="display:inline"><a runat="server" href="~/">Home|</a></li>
-                        <li style="display:inline"><a runat="server" href="~/About">About Us|</a></li>
-                        <li style="display:inline"><a runat="server" href="~/Contact">Contact Us|</a></li>
-                       <li style="display:inline"><a runat="server" href="~/Account/Sitemap">Site Map|</a></li>
-                       <li style="display:inline"><a runat="server" href="~/Account/Terms">Terms and Conditions</a></li>
+                  
+                     <ul>
+                        <li style="display:inline; font-family:'Trebuchet MS'; font-size:small; text-transform:uppercase"><a runat="server" style="font-weight:900; color:#474744" href="~/">Home|</a></li>
+                        <li style="display:inline; font-family:'Trebuchet MS'; font-size:small; text-transform:uppercase"><a runat="server" style="font-weight:900; color:#474744" href="~/About">About Us|</a></li>
+                        <li style="display:inline; font-family:'Trebuchet MS'; font-size:small; text-transform:uppercase"><a runat="server" style="font-weight:900;color:#474744" href="~/Contact">Contact Us|</a></li>
+                       <li style="display:inline; font-family:'Trebuchet MS'; font-size:small; text-transform:uppercase"><a runat="server" style="font-weight:900; color:#474744" href="~/Account/Sitemap">Site Map|</a></li>
+                       <li style="display:inline; font-family:'Trebuchet MS'; font-size:small; text-transform:uppercase"><a runat="server" style="font-weight:900; color:#474744" href="~/Account/Terms">Terms and Conditions</a></li>
                        <%-- <li style="display:inline"><a runat="server" href="~/Account/Register">Register|</a></li>
                         <li style="display:inline"><a runat="server" href="~/Account/Login">Log in</a></li>--%>
                     </ul>
 
-                <p style="color:#1F1F14">&copy; All rights reserved <%: DateTime.Now.Year %> - Baptist Health Louisville</p>
-            
+                <p style="color:#1F1F14; font-family:'Trebuchet MS'; font-size:small; font-weight:900; color:#474744 ">&copy; All rights reserved <%: DateTime.Now.Year %> - Baptist Health Louisville</p>
              </div>
     </div><%--end footer--%>
 

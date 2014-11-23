@@ -172,13 +172,13 @@ namespace BHSCMSApp.Dashboard.ManageRFP
                 int rfpid = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "RFP_ID"));//gets the RFI_ID from the row clicked on grid
 
                 HyperLink details = (HyperLink)e.Row.FindControl("ResponsesLink");
-                details.NavigateUrl = String.Format("/Dashboard/ManageRFP/RFPResponses.aspx?rfiid={0}", rfpid);//
+                details.NavigateUrl = String.Format("/Dashboard/ManageRFP/RFPResponses.aspx?rfpid={0}", rfpid);//
 
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
-                edit.NavigateUrl = String.Format("/Dashboard/ManageRFP/EditRFP.aspx?rfiid={0}", rfpid);//                
+                edit.NavigateUrl = String.Format("/Dashboard/ManageRFP/EditRFP.aspx?rfpid={0}", rfpid);//                
 
                 HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
-                delete.NavigateUrl = String.Format("/Dashboard/ManageRFP/DeleteRFP.aspx?rfiid={0}", rfpid);
+                delete.NavigateUrl = String.Format("/Dashboard/ManageRFP/DeleteRFP.aspx?rfpid={0}", rfpid);
 
             }
 

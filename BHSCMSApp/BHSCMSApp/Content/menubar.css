@@ -265,14 +265,14 @@
     
   }
   #cssmenu > ul > li > ul {
-    width: 100%;
+    /*width: 100%;*/
     display: block;
   }
   #cssmenu.align-right ul li a {
     text-align: left;
   }
   #cssmenu > ul > li > ul > li {
-    width: 100%;
+    /*width: 100%;*/
     display: block;
   }
   #cssmenu.align-right ul ul li a {
@@ -297,7 +297,7 @@
    
   }
   #cssmenu ul {
-    width: 100%;
+    /*width: 100%;*/
   }
   #cssmenu ul > li {
     float: none;

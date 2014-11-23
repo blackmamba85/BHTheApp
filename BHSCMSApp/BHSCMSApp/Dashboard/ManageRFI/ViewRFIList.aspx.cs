@@ -176,8 +176,8 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 HyperLink edit = (HyperLink)e.Row.FindControl("EditLink");
                 edit.NavigateUrl = String.Format("/Dashboard/ManageRFI/EditRFI.aspx?rfiid={0}", rfiId);//                
 
-                HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
-                delete.NavigateUrl = String.Format("/Dashboard/ManageRFI/DeleteRFI.aspx?rfiid={0}", rfiId);
+                //HyperLink delete = (HyperLink)e.Row.FindControl("DeleteLink");
+                //delete.NavigateUrl = String.Format("/Dashboard/ManageRFI/DeleteRFI.aspx?rfiid={0}", rfiId);
 
             }
 
