@@ -334,6 +334,7 @@
     <Content Include="Dashboard\SQL\ContractExpiringdate.sql" />
     <Content Include="Dashboard\SQL\RFIclosingdate.sql" />
     <Content Include="Dashboard\SQL\RFPclosingdate.sql" />
+    <Content Include="Dashboard\Tools\ModifyCategories.aspx" />
     <Content Include="Dashboard\Tools\Reports.aspx" />
     <Content Include="Dashboard\Tools\SQL\CalculateSavings.sql" />
     <Content Include="Dashboard\Tools\SQL\ComparePrices.sql" />
@@ -764,6 +765,13 @@
     <Compile Include="Dashboard\Request\VendorRequest.aspx.designer.cs">
       <DependentUpon>VendorRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\Tools\ModifyCategories.aspx.cs">
+      <DependentUpon>ModifyCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Tools\ModifyCategories.aspx.designer.cs">
+      <DependentUpon>ModifyCategories.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\Tools\Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -828,6 +836,7 @@
       <DependentUpon>201409141614312_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DocumentFile.cs" />
     <Compile Include="Models\DocumentTable.cs">
       <DependentUpon>FilesModel.tt</DependentUpon>
