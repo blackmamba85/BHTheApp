@@ -13,7 +13,7 @@ namespace BHSCMSApp.Dashboard.Tools
 {
     public partial class ModifyCategories : System.Web.UI.Page
     {
-        List<Category> categoryList;
+        static List<Category> categoryList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +21,7 @@ namespace BHSCMSApp.Dashboard.Tools
             { FillCurrentCategoryList(); }
             
             editCategoryDiv.Visible = false;
+            
         }
 
         private void FillCurrentCategoryList()
@@ -62,42 +63,12 @@ namespace BHSCMSApp.Dashboard.Tools
         protected void listBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             editCategoryDiv.Visible = true;
-            addCategoryDiv.Visible = true;
+            addCategoryDiv.Visible = false;
             Category selectedCat = categoryList.Select(x => x).Where(x => x.CategoryName == listBoxCategory.Items[listBoxCategory.SelectedIndex].Text).FirstOrDefault();
 
             hiddenCatID.Value = selectedCat.CategoryID.ToString();
             editCatName.Text = selectedCat.CategoryName;
             editCatDescription.Text = (string.IsNullOrEmpty(selectedCat.Description)) ? "null" : selectedCat.Description;
-        }
-
-        protected void btnEditSubmit_Click(object sender, EventArgs e)
-        {
-            Category modifiedCat = new Category()
-            {
-                CategoryID = int.Parse(hiddenCatID.Value),
-                CategoryName = editCatName.Text,
-                Description = editCatDescription.Text
-            };
-            
-            bool success = PushCategory(modifiedCat);
-            if(success)
-            {
-                string script = "alert('Update successful!')";
-                ScriptManager.RegisterStartupScript(this, GetType(), "randoKey", script, true);
-            }
-            else if(!success)
-            {
-                string script = "alert('Update Unsucessful. Please try again.')";
-                ScriptManager.RegisterStartupScript(this, GetType(), "randoKeyNO", script, true);
-            }
-            
-        }
-
-        protected void btnEditCancel_Click(object sender, EventArgs e)
-        {
-            editCategoryDiv.Visible = false;
-
-            listBoxCategory.ClearSelection();
         }
 
         private bool PushCategory(Category editCat)
@@ -125,44 +96,78 @@ namespace BHSCMSApp.Dashboard.Tools
             return pushSuccess;
         }
 
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void Modify_Command(object sender, CommandEventArgs e)
         {
-            Category newCat = new Category()
+            if(e.CommandName.Equals("EditSubmit"))
             {
-                CategoryName = addCatName.Text,
-                Description = addCatName.Text
-            };
-
-            string qry = "Insert Into BHSCMS.dbo.CategoryTable (Category, Description) Values (@catName, @catDescription)";
-
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
-            {
-                con.Open();
-
-                using (SqlCommand com = new SqlCommand(qry, con))
+                Category modifiedCat = new Category()
                 {
-                    com.Parameters.AddWithValue("@catName", newCat.CategoryName);
-                    com.Parameters.AddWithValue("@catDescription", newCat.Description);
-                    com.ExecuteNonQuery();
+                    CategoryID = int.Parse(hiddenCatID.Value),
+                    CategoryName = editCatName.Text,
+                    Description = editCatDescription.Text
+                };
+
+                bool success = PushCategory(modifiedCat);
+                if (success)
+                {
+                    string script = "alert('Update successful!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "randoKey", script, true);
+                    FillCurrentCategoryList();
+                    editCatName.Text = string.Empty;
+                    editCatDescription.Text = string.Empty;
+                }
+                else if (!success)
+                {
+                    string script = "alert('Update Unsucessful. Please try again.')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "randoKeyNO", script, true);
                 }
             }
-            
-
-        }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            string qry = "Delete From BHSCMS.dbo.CategoryTable Where CategoryID=@catID";
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+            else if (e.CommandName.Equals("Delete"))
             {
-                con.Open();
-
-                using (SqlCommand com = new SqlCommand(qry, con))
+                string qry = "Delete From BHSCMS.dbo.CategoryTable Where CategoryID=@catID";
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
                 {
-                    com.Parameters.AddWithValue("catID", hiddenCatID);
-                    com.ExecuteNonQuery();
+                    con.Open();
+
+                    using (SqlCommand com = new SqlCommand(qry, con))
+                    {
+                        com.Parameters.AddWithValue("catID", hiddenCatID.Value);
+                        com.ExecuteNonQuery();
+                    }
                 }
+                FillCurrentCategoryList();
+            }
+            else if (e.CommandName.Equals("EditCancel"))
+            {
+                editCategoryDiv.Visible = false;
+                addCategoryDiv.Visible = true;
+                listBoxCategory.ClearSelection();
+            }
+            else if(e.CommandName.Equals("Add"))
+            {
+                Category newCat = new Category()
+                {
+                    CategoryName = addCatName.Text,
+                    Description = addCatName.Text
+                };
+
+                string qry = "Insert Into BHSCMS.dbo.CategoryTable (Category, Description) Values (@catName, @catDescription)";
+
+
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand com = new SqlCommand(qry, con))
+                    {
+                        com.Parameters.AddWithValue("@catName", newCat.CategoryName);
+                        com.Parameters.AddWithValue("@catDescription", newCat.Description);
+                        com.ExecuteNonQuery();
+                    }
+                }
+                FillCurrentCategoryList();
+                addCatName.Text = string.Empty;
+                addCatDescription.Text = string.Empty;
             }
         }
     }

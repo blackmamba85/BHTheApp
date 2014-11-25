@@ -156,7 +156,7 @@
                      <li class='active has-sub'><a href='#'><span>Tools</span></a>
                       <ul>
                          <li><a href='/Dashboard/Tools/Reports'><span>Reports</span></a></li>
-                         <li><a href='/Dashboard/Tools/Categories'><span>Modify categories</span></a>                            
+                         <li><a href='/Dashboard/Tools/ModifyCategories'><span>Modify categories</span></a>                            
                          </li>
                       </ul>
                    </li>
