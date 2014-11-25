@@ -11,7 +11,7 @@
         
         
         <%--<a role="menuitem" tabindex="1" href="/Dashboard/Account/Profile.aspx">User Profile <span class="glyphicon glyphicon-cog"></span></a></li>--%>
-    <li><a><asp:Button runat="server" BorderStyle="None" Text="Log Out" BackColor="Transparent" ID="btnlogout" OnClick="btnlogout_Click" CausesValidation="false"/><span class="glyphicon glyphicon-off"></span></a></li>
+    <li><a><asp:Button runat="server" BorderStyle="None" Text="Log Out" BackColor="Transparent" ID="btnlogout" OnClick="btnlogout_Click" PostBackUrl="http://cobweb3.louisville.edu/proxy420-blobfish/" CausesValidation="false"/><span class="glyphicon glyphicon-off"></span></a></li>
       <%--<li role="presentation"><a role="menuitem" tabindex="1" id="logout" href="/Default.aspx">Log Out <span class="glyphicon glyphicon-off"></span></a></li>--%>    
   </ul>
 </div>
