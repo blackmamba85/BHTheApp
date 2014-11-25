@@ -78,12 +78,12 @@ namespace BHSCMSApp.Dashboard.ManageContract
             try
             {
 
-                string qry = "Select C.ContractPrice, R.GatewayPrice, C.StartDate, C.EndDate from BHSCMS.dbo.ContractTable C JOIN RFPTable R ON C.RFPID=R.RFPID Where C.ContractPrice=@ContractPrice && R.GatePrice=@GatewayPrice && C.StartDate=@StartDate && C.EndDate=@EndDate", conn;
+                string qry = "Select C.ContractPrice, R.GatewayPrice, C.StartDate, C.EndDate from BHSCMS.dbo.ContractTable C JOIN RFPTable R ON C.RFPID=R.RFPID Where C.ContractPrice=@ContractPrice && R.GatePrice=@GatewayPrice && C.StartDate=@StartDate && C.EndDate=@EndDate";
                 DataTable dt = new DataTable();
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BHSCMS"].ConnectionString))
                 {
                     con.Open();
-                    using (SqlCommand com = new SqlCommand(qry))
+                    using (SqlCommand com = new SqlCommand(qry, con))
                     {
                         com.Parameters.AddWithValue("@ContractPrice", txtofferedprice.Text);
                         com.Parameters.AddWithValue("@GatewayPrice", txtgatewayprice.Text);

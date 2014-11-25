@@ -58,15 +58,6 @@ namespace BHSCMSApp.Dashboard.ManageContract {
         protected global::System.Web.UI.WebControls.TextBox currentPrice;
         
         /// <summary>
-        /// revNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNumber;
-        
-        /// <summary>
         /// txtgatewayprice control.
         /// </summary>
         /// <remarks>
