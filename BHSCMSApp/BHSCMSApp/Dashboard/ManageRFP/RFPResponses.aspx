@@ -16,12 +16,13 @@
 
       
                 <asp:PlaceHolder runat="server" ID="pnlrfpDetails" Visible="false">
-                    <h4>RFP Information</h4>
+                    <div  style="background-color:#DADAD4; border-radius:3px; padding:4px">
+                    <h4 style="text-align:center">RFP Information</h4>
                     <hr />
 							<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Category</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="category" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="category" ReadOnly="true" BackColor="#DADAD4" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                          
@@ -30,7 +31,7 @@
                             <div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Product Description</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="product" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="product" ReadOnly="true" BackColor="#DADAD4" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                           
@@ -42,7 +43,7 @@
                           <div class="form-group">
                         <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
                         <div class="col-md-8">               
-                            <asp:TextBox runat="server" ID="startdate" ReadOnly="true" BorderColor="Transparent"/>                       
+                            <asp:TextBox runat="server" ID="startdate" ReadOnly="true" BackColor="#DADAD4" BorderColor="Transparent"/>                       
                         </div>
                          </div>
      
@@ -53,7 +54,7 @@
                           <div class="form-group">
                             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">End Date:</asp:Label>
                             <div class="col-md-8">               
-                                <asp:TextBox runat="server" ID="enddate" ReadOnly="true" BorderColor="Transparent"/>                            
+                                <asp:TextBox runat="server" ID="enddate" ReadOnly="true" BackColor="#DADAD4" BorderColor="Transparent"/>                            
                             </div>
                          </div>
 						<br />
@@ -61,7 +62,7 @@
 							<div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Current Price:</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="txtcurrentPrice" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtcurrentPrice" ReadOnly="true" BackColor="#DADAD4" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                           
@@ -70,17 +71,17 @@
                             <div class="form-group">
 							 <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Gateway Price:</asp:Label>
 								 <div class="col-md-8">   
-									<asp:TextBox runat="server" id="txtgatewayPrice" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
+									<asp:TextBox runat="server" id="txtgatewayPrice" BackColor="#DADAD4" ReadOnly="true" Width="60%" BorderColor="Transparent"/>
 								</div>
 							</div>
                             <br />
                            
                             <br />
-                            <hr />
-
+                          
+</div>
  </asp:PlaceHolder>
 
-
+<br />
 <asp:Panel runat="server" Visible="false" ID="pnlgrid">
 
   <h4>Vendor Responses:</h4>
@@ -92,7 +93,7 @@
                         <pagerstyle backcolor="#C6E8F5" height="20px" verticalalign="Bottom" horizontalalign="Center"/>
                         
                          <Columns>
-                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="RFI Documents">
+                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="RFP Documents" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                         <asp:DataList ID="listFiles" runat="server" RepeatColumns="2" RepeatDirection="Horizontal" OnItemCommand="listFiles_ItemCommand">
                             <ItemTemplate>
@@ -133,7 +134,7 @@
                          </asp:HyperLink>
                           </ItemTemplate>
                          </asp:TemplateField>
-                             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone" />                     
+                             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone" ItemStyle-Wrap="false" />                     
                                                  
                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date"  DataFormatString="{0:d}"  />
 

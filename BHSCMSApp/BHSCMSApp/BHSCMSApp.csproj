@@ -355,10 +355,13 @@
     <Content Include="Dashboard\VendorRFP\VendorRFPList.aspx" />
     <Content Include="img\baptisthealthrichmond.jpg" />
     <Content Include="img\BHLOUTM-P.png" />
+    <Content Include="img\BHLOUTM-Psys.png" />
+    <Content Include="img\binding_light.png" />
     <Content Include="img\effective.png" />
     <Content Include="img\employees.png" />
     <Content Include="img\FacebookLogoRed.png" />
     <Content Include="img\findUsOnFacebook.png" />
+    <Content Include="img\light_grey.png" />
     <Content Include="img\notifications.png" />
     <Content Include="img\padlock.png" />
     <Content Include="img\rfis.png" />

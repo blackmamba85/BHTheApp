@@ -68,7 +68,7 @@
         </asp:ScriptManager>
 
          <div id="headerpage">
-            <img src="/img/BHLOUTM-P.png" style="width:25%"/>
+            <img src="/img/BHLOUTM-Psys.png" style="width:45%"/>
             <My:UserInfoBoxControl runat="server" ID="UserInfoBoxControl" />
         </div>
         <br />
