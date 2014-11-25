@@ -22,16 +22,34 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         List<int> permissionlist = new List<int>();
         List<string> companylist = new List<string>();
 
+        static List<DocumentFile> fileList;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _rfiid = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
            
-            GetRFIData();
+         
             if(!IsPostBack)
-            { InitializeParticipantsAndViewers(); }
+            {
+                GetRFIData();
+                InitializeParticipantsAndViewers();
+                PopulateUploadedFiles();
+
+            }
             ControlVendorBoxVisibility();
             gridEditVendors.Visible = false;
             btnVendorCancel.Visible = false;
+        }
+
+
+        private void PopulateUploadedFiles()
+        {
+            using (BHSCMS_Entities dc = new BHSCMS_Entities())
+            {
+                List<DocumentTable> allFiles = dc.DocumentTables.Where(a => a.ReferenceID == _rfiid && a.TypeID == 2).ToList();
+                listFiles.DataSource = allFiles;
+                listFiles.DataBind();
+            }
         }
 
         private void InitializeParticipantsAndViewers()
@@ -87,28 +105,28 @@ namespace BHSCMSApp.Dashboard.ManageRFI
                 listBoxViewers.Visible = true;
         }
 
-        protected void rfi_Documents_Load(object sender, EventArgs e)
-        {
-            InitializeDocumentsListBox();
-        }
-        private void InitializeDocumentsListBox()
-        {
-            if(!Page.IsPostBack)
-            {
-                DataTable dt = InitializeRFIDocuments();
-                foreach (DataRow dr in dt.Rows)
-                {
-                    //Put the name and the id in the Listitem so that it can be referenced when clicked
-                    //See: rfi_Documents_SelectedIndexChanged
-                    string docName = dr[1].ToString();
-                    string doc_ID = dr[3].ToString();
-                    ListItem li = new ListItem(docName, doc_ID);
-                    rfi_Documents.Items.Add(li);
-                }
-            }
+        //protected void rfi_Documents_Load(object sender, EventArgs e)
+        //{
+        //    InitializeDocumentsListBox();
+        //}
+        //private void InitializeDocumentsListBox()
+        //{
+        //    if(!Page.IsPostBack)
+        //    {
+        //        DataTable dt = InitializeRFIDocuments();
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            //Put the name and the id in the Listitem so that it can be referenced when clicked
+        //            //See: rfi_Documents_SelectedIndexChanged
+        //            string docName = dr[1].ToString();
+        //            string doc_ID = dr[3].ToString();
+        //            ListItem li = new ListItem(docName, doc_ID);
+        //            rfi_Documents.Items.Add(li);
+        //        }
+        //    }
             
 
-        }
+        //}
 
         protected void GetRFIData()
         {          
@@ -161,6 +179,46 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
                 currentPrice = Request.Form[txtcurrentPrice.UniqueID];
                 currentPrice = currentPrice.Replace("$", string.Empty);
+
+                if (docUpload.HasFile)
+                {
+                    fileList = new List<DocumentFile>();
+
+                    if (docUpload.PostedFiles.Count == 2)
+                    {
+                        ErrorMessage.Visible = false;
+
+                        foreach (HttpPostedFile file in docUpload.PostedFiles)
+                        {
+                            //HttpPostedFile file = docUpload.PostedFile;
+                            BinaryReader br = new BinaryReader(file.InputStream);
+                            byte[] buffer = br.ReadBytes(file.ContentLength);
+
+                            using (BHSCMS_Entities dc = new BHSCMS_Entities())
+                            {
+                                DocumentTable d = (from d1 in dc.DocumentTables
+                                                   where d1.ReferenceID == _rfiid && d1.TypeID == 2
+                                                   select d1).First();
+                               
+                                d.Document_Data = buffer;
+                                d.Document_Name = file.FileName;
+                                d.Content_Type = file.ContentType;
+                                d.DateStamp = DateTime.Today;
+                                                                                             
+                                
+                                dc.SaveChanges();
+                                PopulateUploadedFiles();
+                            }
+                        }                      
+
+                    }
+                    else
+                    {
+                        ErrorMessage.Visible = true;
+                        FailureText.Text = "***2 Files are required to submit the RFI";
+                    }
+
+                }
                     
                     
                 rfi.UpdateRFI(UserInfoBoxControl.UserID, Request.Form[StartDate.UniqueID], Request.Form[EndDate.UniqueID], Convert.ToDecimal(currentPrice), Request.Form[productDescription.UniqueID].ToString(), _rfiid);
@@ -236,27 +294,27 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             return dt;
         }
 
-        protected void rfi_Documents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string name = rfi_Documents.SelectedItem.Text;
-            int id = int.Parse(rfi_Documents.SelectedValue);
-            DataTable dt = InitializeRFIDocuments();
-            foreach(DataRow dr in dt.Rows)
-            {
-                if (int.Parse(dr[3].ToString()).Equals(id))//Check to make sure the item is the same one
-                {
-                    byte[] data = dr[0] as byte[];
-                    Response.ClearContent();
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + dr[1].ToString());
-                    Response.ContentType = dr[2].ToString();
-                    Response.AddHeader("Content-Length", data.Length.ToString());
-                    Response.BinaryWrite(data);
-                    Response.Flush();
-                    Response.End();
-                }
-            }
+        //protected void rfi_Documents_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string name = rfi_Documents.SelectedItem.Text;
+        //    int id = int.Parse(rfi_Documents.SelectedValue);
+        //    DataTable dt = InitializeRFIDocuments();
+        //    foreach(DataRow dr in dt.Rows)
+        //    {
+        //        if (int.Parse(dr[3].ToString()).Equals(id))//Check to make sure the item is the same one
+        //        {
+        //            byte[] data = dr[0] as byte[];
+        //            Response.ClearContent();
+        //            Response.AddHeader("Content-Disposition", "attachment; filename=" + dr[1].ToString());
+        //            Response.ContentType = dr[2].ToString();
+        //            Response.AddHeader("Content-Length", data.Length.ToString());
+        //            Response.BinaryWrite(data);
+        //            Response.Flush();
+        //            Response.End();
+        //        }
+        //    }
 
-        }
+        //}
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -299,6 +357,48 @@ namespace BHSCMSApp.Dashboard.ManageRFI
             particpantsHeader.Visible = true;
             viewersHeader.Visible = true;
 
+        }
+
+        protected void listFiles_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "Download")
+            {
+                int docID = Convert.ToInt32(e.CommandArgument);
+
+                using (BHSCMS_Entities dc = new BHSCMS_Entities())
+                {
+                    var v = dc.DocumentTables.Where(a => a.DocID == docID).FirstOrDefault();
+                    if (v != null)
+                    {
+                        byte[] fileData = v.Document_Data;
+                        Response.AddHeader("Content-type", v.Content_Type);
+                        Response.AddHeader("Content-Disposition", "attachment; filename=" + v.Document_Name);
+
+                        byte[] dataBlock = new byte[0x1000];
+                        long fileSize;
+                        int bytesRead;
+                        long totalsBytesRead = 0;
+
+                        using (Stream st = new MemoryStream(fileData))
+                        {
+                            fileSize = st.Length;
+                            while (totalsBytesRead < fileSize)
+                            {
+                                if (Response.IsClientConnected)
+                                {
+                                    bytesRead = st.Read(dataBlock, 0, dataBlock.Length);
+                                    Response.OutputStream.Write(dataBlock, 0, bytesRead);
+
+                                    Response.Flush();
+                                    totalsBytesRead += bytesRead;
+                                }
+                            }
+                        }
+                        Response.End();
+                    }
+                }
+
+            }
         }
 
         

@@ -234,11 +234,15 @@
                        <%-- <li style="display:inline"><a runat="server" href="~/Account/Register">Register|</a></li>
                         <li style="display:inline"><a runat="server" href="~/Account/Login">Log in</a></li>--%>
                     </ul>
-
                 <p style="color:#1F1F14; font-family:'Trebuchet MS'; font-size:small; font-weight:900; color:#474744 ">&copy; All rights reserved <%: DateTime.Now.Year %> - Baptist Health Louisville</p>
-            
-             </div>
-    </div><%--end footer--%>
         
+             </div>
+            
+    </div><%--end footer--%>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
 </body>
 </html>

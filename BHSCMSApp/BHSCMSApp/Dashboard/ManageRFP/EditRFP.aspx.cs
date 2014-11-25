@@ -20,7 +20,7 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _rfpid = Convert.ToInt32(Request.QueryString["rfiid"]);//gets and convert to int the rfiif passed in the querystring
+            _rfpid = Convert.ToInt32(Request.QueryString["rfpid"]);//gets and convert to int the rfiif passed in the querystring
 
             GetRFPData();
         }

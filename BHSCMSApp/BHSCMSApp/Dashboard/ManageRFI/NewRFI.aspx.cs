@@ -144,27 +144,27 @@ namespace BHSCMSApp.Dashboard.ManageRFI
         /// </summary>
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
 
-                switch (status)
-                {
-                   case "Disapproved":
-                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
-                        break;
+            //    switch (status)
+            //    {
+            //       case "Disapproved":
+            //            e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color                        
+            //            break;
 
-                    case "Sanctioned":
-                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
-                        e.Row.Cells[6].Font.Bold = true;
-                        break;
+            //        case "Sanctioned":
+            //            e.Row.Cells[6].ForeColor = System.Drawing.Color.Red; // Column color
+            //            e.Row.Cells[6].Font.Bold = true;
+            //            break;
 
-                    default:
-                        e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
-                        e.Row.Cells[6].Font.Bold = true;
-                        break;
-                }
-            }
+            //        default:
+            //            e.Row.Cells[6].ForeColor = System.Drawing.Color.Black; // Column color
+            //            e.Row.Cells[6].Font.Bold = true;
+            //            break;
+            //    }
+            //}
         }
 
         /// <summary>
@@ -239,6 +239,10 @@ namespace BHSCMSApp.Dashboard.ManageRFI
 
             txtCategory.Visible = false;
             txtCategorylabel.Visible = false;
+
+            vendorlist = new List<int>();
+            permissionlist = new List<int>();
+            companylist = new List<string>();
 
         }
 

@@ -159,8 +159,8 @@ namespace BHSCMSApp.Dashboard.ManageRFP
 
                 if (Convert.ToDateTime(enddate) < DateTime.Today)
                 {
-                    e.Row.Cells[7].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
-                    e.Row.Cells[7].Text = "Closed";
+                    e.Row.Cells[10].ForeColor = System.Drawing.Color.FromArgb(219, 83, 51); // Column color
+                    e.Row.Cells[10].Text = "Closed";
                 }
 
             }

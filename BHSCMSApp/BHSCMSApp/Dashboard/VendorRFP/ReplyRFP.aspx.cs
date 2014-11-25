@@ -119,8 +119,7 @@ namespace BHSCMSApp.Dashboard.VendorRFP
         }
 
         protected void savebtn_Click(object sender, EventArgs e)
-        {          
-           
+        {                    
             
             // Code for Upload file to database
             if (docUpload.HasFiles)

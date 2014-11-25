@@ -84,21 +84,45 @@
 						<br />
                             <br />
                             <br />
-                        <div class="form-group">
-                            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI Documents:</asp:Label>
-                            <div class="col-md-8"> 
-                                
-                             <asp:ListBox ID="rfi_Documents" runat="server"  OnSelectedIndexChanged="rfi_Documents_SelectedIndexChanged" OnLoad="rfi_Documents_Load" SelectionMode="Single" />
-                             <%--<asp:LinkButton runat="server"  OnClick="rfiDoc_Click" ID="rfiDoc" ForeColor="#529ABB"  ><span class="glyphicon glyphicon-download"></span>Price notification letter</asp:LinkButton>	 --%>
-                             <br />                                                              
-
-                            </div>
+                      <div class="form-group">
+                            <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">RFI documents</asp:Label>
+                        
+                   <%-- Add a Datalist for show uploaded files --%>
+        <asp:DataList ID="listFiles" runat="server" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="listFiles_ItemCommand">
+            <ItemTemplate>
+                <table class="table" border="1" style="border-color:lightgray" >
+                    <tr>
+                        <td><%#Eval("Document_Name") %></td>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                         <span style="color:#529ABB" class="glyphicon glyphicon-download"></span> <asp:LinkButton ID="lbtnDownload" ForeColor="#529ABB" runat="server" CommandName="Download" CommandArgument=<%#Eval("DocID")%>>Download</asp:LinkButton></td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+        </asp:DataList>
+                              
+                              
+                                           
+                             
                          </div> 
 
-
-
-                             
                            <br />		
+                              <br />		
+							<hr />
+                            <div class="form-group">
+                        <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true" ID="lbluploadeddoc">Upload new RFI documents</asp:Label>
+                       <div class="col-md-8">               
+                      <asp:FileUpload runat="server" AllowMultiple="true" ID="docUpload" />  
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please upload RFI documents" 
+                       ControlToValidate="docUpload"></asp:RequiredFieldValidator>
+                                            
+            </div>
+         </div>
+								  <br />	
+                              <br />	
+                            
 							
 						<hr />					
 							

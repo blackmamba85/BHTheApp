@@ -27,7 +27,6 @@ namespace BHSCMSApp.Dashboard.ManageContract
             {
                 PopulateUploadedFiles();
 
-
             }
         }
 

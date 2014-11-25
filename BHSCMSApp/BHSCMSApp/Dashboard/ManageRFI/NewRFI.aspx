@@ -74,16 +74,16 @@
 
                             <asp:TemplateField HeaderText="Primary Email">
                             <ItemTemplate>
-                          <asp:HyperLink ID="priEmail" runat="server" 
+                          <asp:HyperLink ID="priEmail" runat="server" ToolTip="Click to send email"
                             NavigateUrl='<%# Eval("PrimaryEmail", "mailto:{0}") %>'
                             Text='<%# Eval("PrimaryEmail") %>'>
                          </asp:HyperLink>
                           </ItemTemplate>
                          </asp:TemplateField>
 
-                          <asp:TemplateField HeaderText="Secondary Email">
+                          <asp:TemplateField HeaderText="Secondary Email" Visible="false">
                             <ItemTemplate>
-                          <asp:HyperLink ID="secEmail" runat="server" 
+                          <asp:HyperLink ID="secEmail" runat="server"
                             NavigateUrl='<%# Eval("SecondaryEmail", "mailto:{0}") %>'
                             Text='<%# Eval("SecondaryEmail") %>'>
                          </asp:HyperLink>
@@ -131,7 +131,7 @@
           
 
 
-         <h4>Select start and end date:</h4>
+         <h4>RFI details:</h4>
          <br />
         <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -165,7 +165,8 @@
          <br />
 
 
-
+         <h4>Select start and end date:</h4>
+         <br />
             <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-4 control-label" Font-Bold="true">Start Date:</asp:Label>
             <div class="col-md-8">               

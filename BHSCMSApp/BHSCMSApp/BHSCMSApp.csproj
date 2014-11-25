@@ -356,9 +356,12 @@
     <Content Include="img\BHLOUTM-P.png" />
     <Content Include="img\effective.png" />
     <Content Include="img\employees.png" />
+    <Content Include="img\FacebookLogoRed.png" />
+    <Content Include="img\findUsOnFacebook.png" />
     <Content Include="img\notifications.png" />
     <Content Include="img\padlock.png" />
     <Content Include="img\rfis.png" />
+    <Content Include="img\Twitter-button.png" />
     <Content Include="img\vendors.png" />
     <Content Include="img\purple.png" />
     <Content Include="img\business.jpg" />

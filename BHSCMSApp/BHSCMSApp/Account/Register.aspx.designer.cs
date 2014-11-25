@@ -211,13 +211,22 @@ namespace BHSCMSApp.Account {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
         
         /// <summary>
-        /// TaxForm control.
+        /// docUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload TaxForm;
+        protected global::System.Web.UI.WebControls.FileUpload docUpload;
+        
+        /// <summary>
+        /// reqdocupload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqdocupload;
         
         /// <summary>
         /// RegCode control.

@@ -103,13 +103,40 @@ namespace BHSCMSApp.Dashboard.ManageRFI {
         protected global::System.Web.UI.WebControls.TextBox EndDate;
         
         /// <summary>
-        /// rfi_Documents control.
+        /// listFiles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox rfi_Documents;
+        protected global::System.Web.UI.WebControls.DataList listFiles;
+        
+        /// <summary>
+        /// lbluploadeddoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbluploadeddoc;
+        
+        /// <summary>
+        /// docUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload docUpload;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// gridEditVendors control.

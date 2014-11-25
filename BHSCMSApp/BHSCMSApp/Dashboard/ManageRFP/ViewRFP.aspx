@@ -46,12 +46,14 @@
                               <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
                             <asp:BoundField DataField="RFP_ID" HeaderText="RFP_ID" Visible="false" />
                             <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"/>
-                              <asp:BoundField DataField="Name" HeaderText="Created By"/>
+                               <asp:BoundField DataField="Responses" HeaderText="Replies" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Bold="true"/>
+                               <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
+                           <asp:BoundField DataField="CurrentPrice" HeaderText="Current Price" DataFormatString="{0:C}"  />
+                            
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
-                            <asp:BoundField DataField="ProductDescription" HeaderText="Product" />
-                           <asp:BoundField DataField="CurrentPrice" HeaderText="Current Price" DataFormatString="{0:C}"  />
-                             <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}"  />
+                            <asp:BoundField DataField="Name" HeaderText="Created By"/>
+                             <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}" Visible="false"  />
 
                         </Columns>
                     </asp:GridView>

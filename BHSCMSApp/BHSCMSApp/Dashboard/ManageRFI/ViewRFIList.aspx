@@ -51,13 +51,15 @@
                               <%--<asp:BoundField DataField="Quotes" HeaderText="Quotes"/>--%>
                             <asp:BoundField DataField="RFI_ID" HeaderText="RFI_ID" Visible="false" />
                             <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"/>
-                              <asp:BoundField DataField="Name" HeaderText="Created By"/>
+                             <asp:BoundField DataField="Responses" HeaderText="Replies" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Bold="true"/>
+                              <asp:BoundField DataField="Category" HeaderText="Category" />
+                              <asp:BoundField DataField="ProductDescription" HeaderText="Description" />
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="EndDate" HeaderText="End Date"  DataFormatString="{0:d}"  />
-                            <asp:BoundField DataField="Category" HeaderText="Category" />
-                              <asp:BoundField DataField="ProductDescription" HeaderText="Description" />
-                             <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}"  />
-                             <asp:BoundField DataField="ModifiedDate" HeaderText="Modified Date" DataFormatString="{0:d}"  />
+                             <asp:BoundField DataField="Name" HeaderText="Created By"/>
+                            
+                             <asp:BoundField DataField="CreatedDate" HeaderText="Created Date"  DataFormatString="{0:d}" Visible="false" />
+                             <asp:BoundField DataField="ModifiedDate" HeaderText="Modified Date" DataFormatString="{0:d}" Visible="false"  />
 
                         </Columns>
                     </asp:GridView>
